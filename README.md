@@ -13,6 +13,7 @@
 ## READY LIST:
 1. API Usuarios
 2. API CHAT
+3. Documentación: (Disponible en http://<IpDelServidor>:<PuertoDelServidor>/api/)
  ---
  ## Lista de funcioanlidades del chat (Agregar si es necesario):
  1. A las usuarias en el chat no cargan mensajes anteriores
