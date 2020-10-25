@@ -1,0 +1,93 @@
+<div class="modal-header">
+	<h3 class="modal-title">¡Reservar!</h3>
+	<button type="button" class="close" data-dismiss="modal" (click)="cancel('Cerrar')">
+	<span aria-hidden="true">&times;</span>
+	</button>
+ </div>
+ <div class="modal-body">
+	<div class="card border-light card-body">
+	   <form [formGroup]="contratoPaseoFormulario" (ngSubmit)="!contratoPaseoFormulario.invalid && crearContratoPaseo(contratoPaseoFormulario.value, contratoPaseoFormulario.value, contratoPaseoFormulario.value)">
+		<!--
+			<div class="form-group">
+		  <div class="input-group">
+			 <div class="input-group-prepend">
+				<span class="input-group-text">Sitio de encuentro</span>
+			 </div>
+			 <input novalidate id="¨sitioEncuentro" type="text" class="form-control" formControlName="sitioEncuentro" placeholder="Sitio de encuentro para el paseo">
+		  </div>
+		  <span class="badge badge-danger"
+			 *ngIf="contratoPaseoFormulario.get('sitioEncuentro').hasError('required') && contratoPaseoFormulario.get('sitioEncuentro').touched">
+		  Sitio de encuentro para el paseo requerido
+		  </span>
+	   </div>
+		  -->
+	   <div class="form-group">
+		  <div class="input-group">
+			 <div class="input-group-prepend">
+				<span class="input-group-text">Fecha de inicio (aaaa-mm-dd)</span>
+			 </div>
+			 <input id="fechaInicio" type="text" class="form-control" formControlName="fechaInicio" placeholder="aaaa-mm-dd">
+		  </div>
+		  <span class="badge badge-danger"
+			 *ngIf="contratoPaseoFormulario.get('fechaInicio').hasError('required') && contratoPaseoFormulario.get('fechaInicio').touched">
+		  Fecha de inicio del paseo requerida
+		  </span>
+		  <span class="badge badge-danger"
+			 *ngIf="contratoPaseoFormulario.get('fechaInicio').touched && contratoPaseoFormulario.get('fechaInicio').hasError('pattern')">
+		  Formato de fecha incorrecto
+		  </span>
+	   </div>
+	   <div class="form-group">
+		  <div class="input-group">
+			 <div class="input-group-prepend">
+				<span class="input-group-text">Hora de inicio (hh:mm)</span>
+			 </div>
+			 <input id="horaInicio" type="text" class="form-control" formControlName="horaInicio" placeholder="hh:mm">
+		  </div>
+		  <span class="badge badge-danger"
+			 *ngIf="contratoPaseoFormulario.get('horaInicio').hasError('required') && contratoPaseoFormulario.get('horaInicio').touched">
+		  Hora de inicio del paseo requerida
+		  </span>
+		  <span class="badge badge-danger"
+			 *ngIf="contratoPaseoFormulario.get('horaInicio').touched && contratoPaseoFormulario.get('horaInicio').hasError('pattern')">
+		  Formato incorrecto de hora
+		  </span>
+	   </div>
+
+	  <div class="form-group">
+		<div class="input-group">
+		   <div class="input-group-prepend">
+			  <span class="input-group-text">Perro</span>
+		   </div>
+		   <select class="custom-select" class="form-control" id="perro" formControlName="perro">
+			<option *ngFor="let perro of clienteA.perros" value="{{perro.id}}">{{perro.nombre}}</option>
+		  </select>
+		</div>
+		<span class="badge badge-danger"
+		   *ngIf= "contratoPaseoFormulario.get('perro').hasError('required') && contratoPaseoFormulario.get('perro').touched">
+		Perro requerido
+		</span>
+	 	</div>	
+
+
+	   <div class="form-group">
+		  <div class="input-group">
+			 <div class="input-group-prepend">
+				<span class="input-group-text">Medio de pago</span>
+			 </div>
+			 <select class="form-control" id="medioPago" formControlName="medioPago" placeholder="CRÉDITO">
+			 <option *ngFor= "let m of mediosPago" value="{{m}}">{{m}}</option>
+			 </select>
+		  </div>
+		  <span class="badge badge-danger"
+			 *ngIf= "contratoPaseoFormulario.get('medioPago').hasError('required') && contratoPaseoFormulario.get('medioPago').touched">
+		  Medio de pago requerido
+		  </span>
+	   </div>
+	   <div class="row  m-3">
+		  <button type="submit" class="btn btn-info" [disabled]="!contratoPaseoFormulario.valid"><strong>Reservar</strong></button>
+		  <button type="button" class="btn btn-outline-danger ml-3" (click)="cancel('Botón cancelar')">Cancelar</button>
+	   </div>
+	   </form>
+	</div>
+ </div>

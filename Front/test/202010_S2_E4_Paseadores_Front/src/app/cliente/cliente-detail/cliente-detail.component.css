@@ -1,0 +1,17 @@
+
+.banner{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+.textoBienvenida{
+    position: absolute;
+    top: 10%;
+    left: 70%;
+}
+
+.nombreBanner {
+    position: absolute;
+    top: 40%;
+    left: 70%;
+}

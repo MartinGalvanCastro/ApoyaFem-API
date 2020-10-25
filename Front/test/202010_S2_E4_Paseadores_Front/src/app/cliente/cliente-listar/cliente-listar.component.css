@@ -1,0 +1,15 @@
+#cardCliente{
+     margin-bottom: 30px;
+}
+.card-img-top{
+  padding: 15px;
+  height: 200px;
+}
+
+#enlace{
+  padding: 0px;
+}
+
+#rowClientes {
+  justify-content: space-around;
+} 

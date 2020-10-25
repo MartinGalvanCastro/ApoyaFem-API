@@ -1,0 +1,139 @@
+<div class="container-xl" style="padding:0;">
+  <br>
+  <div class="card border-secondary">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img class="card-img-top" src={{paseadorDetail.imagen}} alt="https://ui-avatars.com/api/?background=e26e2d&color=fff&size=128&bold=true&name={{paseadorDetail.nombre}}" style="width: 100%;height: 370px; object-fit: cover;object-position: 100% 100%;padding:2rem;border-radius: 50%;">
+      </div>
+      <div class="col-md-8 card-body" style="padding-left: 2rem;padding-right: 2rem;">
+        <div class="row align-items-start">
+          <div class="col-lg-6" style="padding-left: 0;">
+            <h2 class="card-title" style="padding-left: 0;">{{paseadorDetail.nombre}}</h2>
+          </div>
+          <div class="col-lg-6" style="padding-right: 0;" data-toggle="tooltip" data-placement="top" title={{paseadorDetail.calificacionGlobal}}>
+            <span *ngIf="5 <= paseadorDetail.calificacionGlobal" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
+            <span *ngIf="5 > paseadorDetail.calificacionGlobal" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
+            <span *ngIf="4 <= paseadorDetail.calificacionGlobal" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
+            <span *ngIf="4 > paseadorDetail.calificacionGlobal" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
+            <span *ngIf="3 <= paseadorDetail.calificacionGlobal" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
+            <span *ngIf="3 > paseadorDetail.calificacionGlobal" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
+            <span *ngIf="2 <= paseadorDetail.calificacionGlobal" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
+            <span *ngIf="2 > paseadorDetail.calificacionGlobal" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
+            <span *ngIf="1 <= paseadorDetail.calificacionGlobal" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
+            <span *ngIf="1 > paseadorDetail.calificacionGlobal" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
+          </div>
+        </div>
+        <div class="row align-items-end">
+          <div class="col text-center" style="padding-left: 0;padding-right: 0;">
+            <ul class="nav nav-pills nav-fill mb-3" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="pills-info-tab" data-toggle="pill" href="#pills-info" role="tab" aria-controls="pills-info" aria-selected="true"><strong>Información</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><strong>Paseos</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-cali-tab" data-toggle="pill" href="#pills-cali" role="tab" aria-controls="pills-cali" aria-selected="false"><strong>Calificaciones</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><strong>Calificar</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-hor-tab" data-toggle="pill" href="#pills-hor" role="tab" aria-controls="pills-hor" aria-selected="false"><strong>Horarios</strong></a>
+              </li>
+              <li class="nav-item" *ngIf="esAdmin()">
+                <a class="nav-link" id="pills-pagos-tab" data-toggle="pill" href="#pills-pagos" role="tab" aria-controls="pills-pagos" aria-selected="false"><strong>Pagos</strong></a>
+              </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel" data-interval="false">
+                  <div class="carousel-inner">
+                    <ng-container *ngFor="let p of paseadorDetail.paseos; index as i" >
+                      <div class="carousel-item active" *ngIf="i==0; else citem">
+                        <div class="card border-primary h-100">
+                          <h4 class="card-header">Paseo {{p.id}}</h4>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Precio: {{formatter.format(p.costo)}}</li>
+                            <li class="list-group-item">Fecha inicio: {{strToTime(p.horaInicio)}}</li>
+                            <li class="list-group-item">Duración: {{p.duracion}} minutos</li>
+                          </ul>
+                        <div class="card-footer">
+                          <a class="btn btn-outline-primary" type="button" href="./paseos/{{p.id}}"><strong>Más info. del paseo</strong></a>
+                        </div>
+                      </div>
+                      </div>
+                      <ng-template #citem>
+                        <div class="carousel-item">
+                          <div class="card border-primary h-100">
+                            <h4 class="card-header">Paseo {{p.id}}</h4>
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item">Precio: {{formatter.format(p.costo)}}</li>
+                              <li class="list-group-item">Fecha inicio: {{strToTime(p.horaInicio)}}</li>
+                              <li class="list-group-item">Duración: {{p.duracion}} minutos</li>
+                            </ul>
+                          <div class="card-footer">
+                            <a class="btn btn-outline-primary" type="button" href="./paseos/{{p.id}}"><strong>Más info. del paseo</strong></a>
+                          </div>
+                        </div>
+                        </div>
+                      </ng-template>
+                  </ng-container>
+                  </div>
+                  <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+              </div>
+              <div class="tab-pane fade show active" id="pills-info" role="tabpanel" aria-labelledby="pills-info-tab">
+                <div class="card border-primary h-100">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">Cédula: {{paseadorDetail.identificacion}}</li>
+                      <li class="list-group-item">Correo electrónico: {{paseadorDetail.correo}}</li>
+                      <li class="list-group-item">Número telefónico: {{paseadorDetail.telefono}}</li>
+                      <li class="list-group-item">Calificaciones: {{paseadorDetail.numeroCalificaciones}}</li>
+                      <li class="list-group-item" *ngIf="esAdmin()">Cuenta Bancaria: {{paseadorDetail.cuentaBancaria}}</li>
+                      <li class="list-group-item" *ngIf="esAdmin()">EPS: {{paseadorDetail.eps}}</li>
+                      <li class="list-group-item" *ngIf="esAdmin()">ARL: {{paseadorDetail.arl}}</li>
+                    </ul>
+                </div>
+              </div>
+              <div class="tab-pane fade text-left" id="pills-cali" role="tabpanel" aria-labelledby="pills-cali-tab">
+                <app-calificacionPas-listar [paseosIn]="paseadorDetail.paseos"></app-calificacionPas-listar>
+              </div>
+              <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <app-calificar-pas></app-calificar-pas>
+              </div>
+              <div class="tab-pane fade" id="pills-hor" role="tabpanel" aria-labelledby="pills-hor-tab">
+                <div class="row">
+                  <div class="col">
+                    <div class="row">
+                      <div class="col" *ngIf= "crearNuevo">
+                        <app-registrar-horario></app-registrar-horario>
+                      </div>
+                    </div>
+                    <app-horario-listar [horarios] = "paseadorDetail.horariosDisponibles"></app-horario-listar>
+                  </div>
+                </div>
+                <div class="row" *ngIf="esPaseador()">
+                  <div class="col">
+                    <button type="button" id="agregar" class="btn btn-outline-info" (click)= "openHorario()" style="margin-top: 10px; margin-left: 10px; width: fit-content" *ngIf="esPaseador()"><strong>Agregar Horario</strong></button>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pills-pagos" role="tabpanel" aria-labelledby="pills-pagos-tab">
+                <app-pago-paseador-listar-lista [pagosPaseador] = "paseadorDetail.pagos"></app-pago-paseador-listar-lista>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>

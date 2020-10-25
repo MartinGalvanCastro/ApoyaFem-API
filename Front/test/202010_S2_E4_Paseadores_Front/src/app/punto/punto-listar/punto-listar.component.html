@@ -1,0 +1,8 @@
+<div *ngIf="puntos.length==0" style="padding: 2rem;" >
+  <div class="alert alert-info" role="alert" style="min-width: 100%;min-height: 100%;text-align: center;">
+    <h4>Este recorrido no tiene puntos</h4>
+  </div>
+</div>
+<span *ngIf="puntos.length > 0">
+  <img src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/{{getPins()}}/auto/700x700?access_token=pk.eyJ1IjoibnVycmVnbyIsImEiOiJjazl2MWhkNGIwN3Y3M2ZsYTJrdzJqcm9sIn0._uz2wXbHxA0f7vJQKsHd1w" alt="" style="max-height: 100%;max-width: 100%;">
+</span>

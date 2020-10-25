@@ -1,0 +1,22 @@
+<div class="table-responsive">
+  <table class="card-table table">
+    <thead class="thead-dark">
+      <tr class="centrado">
+        <th> Fecha y hora de inicio </th>
+        <th> Duración (minutos)</th>
+        <th> Costo </th>
+        <th> Cupo máximo </th>
+        <th> Disponible </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="centrado" *ngFor= "let ps of paseos">
+        <td class="border">{{formatoDia(ps.horaInicio)}} </td>
+        <td class="border">{{ps.duracion}}</td>
+        <td class="border">{{ps.costo}} pesos </td>
+        <td class="border">{{ps.cupoMaximo}} </td>
+        <td class="border">{{darDisponible(ps.disponible)}} </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

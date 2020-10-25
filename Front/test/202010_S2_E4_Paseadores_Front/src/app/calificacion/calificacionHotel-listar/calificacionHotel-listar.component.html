@@ -1,0 +1,33 @@
+
+<div class="row row-cols-1 row-cols-md-2">
+  <div class="col mb-4" *ngFor = "let h of contratosHotel">
+    <div class="media" *ngIf="h.calificacion!=null">
+      <img src="{{h.cliente.imagen}}" class="align-self-start mr-3" alt="https://ui-avatars.com/api/?background=e26e2d&color=fff&size=128&bold=true&name={{h.cliente.nombre}}" style="border-radius: 50%;" height="50" width="50">
+      <div class="media-body ">
+        <div class="card border-info mb-3">
+          <div class="card-header bg-info border-info" style="color: white;padding-bottom:0;padding-left: 1rem;padding-top: 0.7rem;">
+            <div class="row">
+              <div class="col-md-6"><h5>{{h.cliente.nombre}} dice:</h5></div>
+              <div class="col-md-6" style="padding: 0;padding-bottom: 0.5rem;" data-toggle="tooltip" data-placement="top" title={{h.calificacion.valoracion}}>
+                <span *ngIf="5 <= h.calificacion.valoracion" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="25" height="25"></span>
+                <span *ngIf="5 > h.calificacion.valoracion" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="25" height="25" style="opacity: 0.5;"></span>
+                <span *ngIf="4 <= h.calificacion.valoracion" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="25" height="25"></span>
+                <span *ngIf="4 > h.calificacion.valoracion" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="25" height="25" style="opacity: 0.5;"></span>
+                <span *ngIf="3 <= h.calificacion.valoracion" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="25" height="25"></span>
+                <span *ngIf="3 > h.calificacion.valoracion" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="25" height="25" style="opacity: 0.5;"></span>
+                <span *ngIf="2 <= h.calificacion.valoracion" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="25" height="25"></span>
+                <span *ngIf="2 > h.calificacion.valoracion" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="25" height="25" style="opacity: 0.5;"></span>
+                <span *ngIf="1 <= h.calificacion.valoracion" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="25" height="25"></span>
+                <span *ngIf="1 > h.calificacion.valoracion" class="float-right"><img src="../../../assets/star-128.webp" alt="" width="25" height="25" style="opacity: 0.5;"></span>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-info" style="padding:0.7rem;">
+            <p class="card-text">{{h.calificacion.comentario}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>

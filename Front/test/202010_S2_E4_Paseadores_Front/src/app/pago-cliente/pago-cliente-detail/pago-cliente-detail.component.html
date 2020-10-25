@@ -1,0 +1,81 @@
+<div class="container-fluid">
+  <h3 class="tituloReferencia" style="margin-bottom: 50px;">Referencia de pago: {{pagoCliente.referencia}}</h3>
+  <div class="row">
+    <div class="col-4">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <h4 style="margin-bottom: 20px;">Información del pago</h4>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Monto</strong></td>
+            <td>{{pagoCliente.monto}}</td>
+          </tr>
+          <tr>
+            <td><strong>Servicio</strong></td>
+            <td *ngIf="(pagoCliente.contratoHotel === undefined) == false; else esPaseo">Hotel</td>
+            <ng-template #esPaseo><td>Paseo</td></ng-template>
+          </tr>
+          <tr>
+            <td><strong>Medio de pago</strong></td>
+            <td>{{pagoCliente.medioPago}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-8">
+      <h4 style="margin-bottom: 30px;">Información del cliente</h4>
+      <div class="row">
+        <div class="col-4 allign-items-center">
+          <img class="img-fluid" src={{pagoCliente.cliente.imagen}} width="200px"/>
+        </div>
+        <div class="col-8">
+          <div class="table-responsive">
+            <table class="card-table table">
+              <tbody>
+                <tr>
+                  <th>
+                    <strong>Nombre</strong>
+                  </th>
+                  <th *ngIf="tuvoInput==true">
+                    <a routerLink="../../clientes/{{pagoCliente.cliente.id}}">{{pagoCliente.cliente.nombre}}</a>
+                  </th>
+                  <th *ngIf="tuvoInput==false">
+                    <a routerLink="../../../clientes/{{pagoCliente.cliente.id}}">{{pagoCliente.cliente.nombre}}</a>
+                  </th>
+                </tr>
+                <tr>
+                  <th>
+                    <strong>Identificación</strong>
+                  </th>
+                  <th>
+                    {{pagoCliente.cliente.identificacion}}
+                  </th>
+                </tr>
+                <tr>
+                  <th>
+                    <strong>Correo</strong>
+                  </th>
+                  <th>
+                    {{pagoCliente.cliente.correo}}
+                  </th>
+                </tr>
+                <tr>
+                  <th>
+                    <strong>Teléfono</strong>
+                  </th>
+                  <th>
+                    {{pagoCliente.cliente.telefono}}
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>

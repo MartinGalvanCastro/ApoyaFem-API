@@ -1,0 +1,92 @@
+<div class="modal-header">
+  <h3 class="modal-title">Editar mi información</h3>
+  <button type="button" class="close" data-dismiss="modal" (click)="cancel('Cerrar')">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="card border-light card-body">
+    <form [formGroup]="clientForm" (ngSubmit)="!clientForm.invalid && updateCliente(clientForm.value)">
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Nombre</span>
+          </div>
+          <input novalidate id="nombre" class="form-control" formControlName="nombre" placeholder="Tu nombre completo">
+        </div>
+        <span class="badge badge-danger"
+          *ngIf="clientForm.get('nombre').hasError('required') && clientForm.get('nombre').touched">
+          Nombre requerido
+        </span>
+        <span class="badge badge-danger"
+          *ngIf="clientForm.get('nombre').hasError('minlength')">
+          El nombre es muy corto
+        </span>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Identificación</span>
+          </div>
+          <input id="identificacion" type="text" class="form-control" formControlName="identificacion" placeholder="Tu número de identificación">
+        </div>
+        <span class="badge badge-danger"
+        *ngIf="clientForm.get('identificacion').hasError('required') && clientForm.get('identificacion').touched">
+        Identificación requerida
+        </span>
+        <span class="badge badge-danger"
+        *ngIf="clientForm.get('identificacion').hasError('minlength')">
+        Debe tener 10 números
+        </span>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Correo</span>
+          </div>
+          <input id="correo" type="text" class="form-control" formControlName="correo" placeholder="Tu correo">
+        </div>
+        <span class="badge badge-danger"
+        *ngIf="clientForm.get('correo').hasError('required') && clientForm.get('correo').touched">
+        Correo requerido
+        </span>
+        <span class="badge badge-danger"
+        *ngIf="clientForm.get('correo').touched && clientForm.get('correo').hasError('email')">
+        Formato incorrecto
+        </span>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Telefono</span>
+          </div>
+          <input id="telefono" type="text" class="form-control" formControlName="telefono" placeholder="Tu número de teléfono">
+        </div>
+        <span class="badge badge-danger"
+        *ngIf="clientForm.get('telefono').hasError('required') && clientForm.get('telefono').touched">
+        Teléfono requerido
+        </span>
+        <span class="badge badge-danger"
+        *ngIf="clientForm.get('telefono').hasError('minlength')">
+        Debe tener 10 números
+        </span>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Imagen</span>
+          </div>
+          <input id="imagen" type="text" class="form-control" formControlName="imagen" placeholder="Enlace de una página con tu imagen">
+        </div>
+        <span class="badge badge-danger"
+        *ngIf="clientForm.get('imagen').hasError('required') && clientForm.get('imagen').touched">
+        Imagen requerida
+        </span>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-info" [disabled]="!clientForm.valid"><strong>Guardar</strong></button>                
+        <button type="button" class="btn btn-outline-danger ml-3" data-dismiss="modal" (click)="cancel('Botón cancelar')">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

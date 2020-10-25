@@ -1,0 +1,96 @@
+<div class="modal-header">
+  <h3 class="modal-title">Registra a tu perro</h3>
+  <button type="button" class="close" data-dismiss="modal" (click)="cancelCreation()">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="card border-light card-body">
+    <form [formGroup]="perroForm" (ngSubmit)="!perroForm.invalid && createPerro(perroForm.value)">
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Historial clínico</span>
+          </div>
+          <input id="idPerro" type="text" class="form-control" formControlName="idPerro" placeholder="El idPerro de tu perro">
+        </div>
+        <span class="badge badge-danger"
+        *ngIf="perroForm.get('idPerro').hasError('required') && perroForm.get('idPerro').touched">
+        Historial clínico requerido
+        </span>
+        <span class="badge badge-danger"
+        *ngIf="perroForm.get('idPerro').hasError('min')">
+          Debe ser un número positivo
+        </span>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Nombre</span>
+          </div>
+          <input novalidate id="nombre" class="form-control" formControlName="nombre" placeholder="El nombre del perro">
+        </div>
+        <span class="badge badge-danger"
+        *ngIf="perroForm.get('nombre').hasError('required') && perroForm.get('nombre').touched">
+        Nombre requerido
+        </span>
+        <span class="badge badge-danger"
+        *ngIf="perroForm.get('nombre').hasError('minlength')">
+        El nombre es muy corto
+        </span>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Edad</span>
+          </div>
+          <input id="edad" type="text" class="form-control" formControlName="edad" placeholder="La edad del perro ">
+        </div>
+        <span class="badge badge-danger"
+        *ngIf="perroForm.get('edad').hasError('required') && perroForm.get('edad').touched">
+        Edad requerida
+        </span>
+        <span class="badge badge-danger"
+        *ngIf="perroForm.get('edad').hasError('min')">
+        Debe ser un valor positivo
+        </span>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Raza</span>
+          </div>
+          <input id="raza" type="text" class="form-control" formControlName="raza" placeholder="La raza del perro ">
+        </div>
+        <span class="badge badge-danger"
+        *ngIf="perroForm.get('raza').hasError('required') && perroForm.get('raza').touched">
+        Raza requerida
+        </span>
+        <span class="badge badge-danger"
+        *ngIf="perroForm.get('raza').touched && perroForm.get('raza').hasError('minlength')">
+        El nombre de la raza es muy corto
+        </span>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Imagen</span>
+          </div>
+          <input id="imagen" type="text" class="form-control" formControlName="imagen" placeholder="Enlace de una página con la imagen de tu perro">
+        </div>
+        <span class="badge badge-danger"
+        *ngIf="perroForm.get('imagen').hasError('required') && perroForm.get('imagen').touched">
+        Imagen requerida
+        </span>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-info" [disabled]="!perroForm.valid"><strong>Guardar</strong></button>
+        <button type="button" class="btn btn-outline-danger ml-3" (click)="cancelCreation()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

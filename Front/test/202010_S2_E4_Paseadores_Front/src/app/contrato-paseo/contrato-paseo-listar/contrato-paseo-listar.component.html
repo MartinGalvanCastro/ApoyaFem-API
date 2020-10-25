@@ -1,0 +1,56 @@
+<div class="container-xl">
+    <br>
+  <div class="card contratoPaseo">
+    <h2>Contratos de los paseos</h2>
+    <div class="table-responsive table-hover">
+        <table class="card-table table" style="text-align: center;">
+            <thead class="thead" style="background-color: #E26E2D;color: white;">
+                <tr class="centrado">
+                    <th>Id</th>
+                    <th>Hora Encuentro</th>
+                    <th>Sitio Encuentro</th>
+                    <th>Cliente</th>
+                    <th>Paseo</th>
+                    <th>Perro</th>
+                    <th>C.Recorrido</th>
+                    <th>C.paseador</th>
+                    <th>Pago</th>
+                </tr>
+            </thead>
+            <tbody class="centrado">
+                <tr *ngFor="let p of contratosPaseo">
+                    <td class="border">{{p.id}}</td>
+                    <td class="border">{{strToTime(p.horaEncuentro)}}</td>
+                    <td class="border" *ngIf="p.sitioEncuentro;else temp">{{p.sitioEncuentro.id}}  </td>
+                    <td class="border" *ngIf="p.cliente;else temp">{{p.cliente.nombre}}</td>
+                    <td class="border" *ngIf="p.paseo;else temp">{{p.paseo.id}}  </td>
+                    <td class="border" *ngIf="p.perro;else temp">{{p.perro.nombre}}</td>
+                    <td class="border" *ngIf="p.calificacionRecorrido;else temp">{{p.calificacionRecorrido.id}}</td>
+                    <td class="border" *ngIf="p.calificacionPaseador;else temp">{{p.calificacionPaseador.id}}</td>
+                    <td class="border" *ngIf="p.pago;else temp">{{p.pago.id}}</td>
+                    <ng-template #temp><td class="border" >No disponible </td></ng-template>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col" *ngIf= "esAdmin()">
+      <br>
+      <button type="button" id="agregar" class="btn btn-primary" (click) = "abrirReservar()"><strong>Agregar contrato paseo</strong></button>
+    </div>
+  </div>
+  
+  <br>
+  <div class="row" *ngIf= "crearNuevo">
+    <div class="col">
+      <div class="card border-primary">
+        <h4 class="card-header">Creación de un contrato de un paseo</h4>
+        <div class="card-body">
+          <app-contrato-paseo-crear></app-contrato-paseo-crear>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+  </div>

@@ -1,0 +1,32 @@
+<div class="container-xl">
+  <br>
+  <div *ngIf = "seleccionado">
+    <app-pago-paseador-detail id="detalle" [pagoPaseadorDetail] = "pagoPaseadorSeleccionado"></app-pago-paseador-detail>
+  </div>
+  <div class="card paseadores">
+    <h2>Pagos a los paseadores</h2>
+    <div class="table-responsive table-hover">
+      <table class="card-table table">
+        <thead class="thead" style="background-color: #E26E2D;color: white;text-align: center;">
+          <tr class="centrado">
+            <th>Referencia</th>
+            <th>Monto</th>
+            <th>Fecha límite</th>
+            <th>Paseador</th>
+          </tr>
+        </thead>
+        <tbody class="centrado">
+          <tr *ngFor= "let pp of pagosPaseadores">
+            <td class="border"><a id="enlace" (click) = "alSeleccionar(pp)"> {{pp.referencia}} </a></td>
+            <td class="border">{{pp.monto}} pesos </td>
+            <td class="border">{{formatoDia(pp.fechaLimite)}} </td>
+            <td class="border">
+              Nombre : {{pp.paseador.nombre}} - Identificación : {{pp.paseador.identificacion}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <br>
+</div>

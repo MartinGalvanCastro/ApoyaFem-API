@@ -1,0 +1,57 @@
+<div class="container-xl">
+  <br>
+  <div *ngIf="!esCliente()">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Registrese o ingrese como cliente para reservar</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+    <div *ngIf="esCliente()">
+      <div class="row">
+        <div class="col">
+          <div class="text-center">
+            <button type="button" id="agregar" class="btn btn-primary btn-lg btn-block" (click) = "alSeleccionar()" *ngIf= "!crearNuevo"><strong>¡A reservar!</strong></button>
+            <button type="button" class="btn btn-outline-danger btn-lg" (click) = "alSeleccionar()" *ngIf= "crearNuevo">Cerrar reserva</button>
+          </div>
+          <br> 
+        </div>
+      </div>
+        <div class="card bg-light" *ngIf= "crearNuevo">
+          <div class="card-body">
+            <app-contrato-hotel-crear></app-contrato-hotel-crear>
+            <br>
+          </div>
+        </div>
+      
+    </div>
+    <div>   
+         <div *ngIf = "selected && !crearNuevo">
+        <app-hora-hotel-detail [horaHotelDetail]="selectedHoraHotel"> </app-hora-hotel-detail>
+        <br>
+        </div>
+    </div>
+    <div *ngIf = "!crearNuevo" >
+        <div class="text-center">
+          <h2><b>Horas para reservas del Hotel</b></h2>
+        </div>  
+        <div class="row">
+            <div class="card">
+                <full-calendar defaultView="dayGridMonth" [plugins]="calendarPlugins" [events]="calendarEvents" 
+                    [eventColor]="color" (eventClick)="handleDateClick($event)" selectable:true style="padding:1rem;"></full-calendar>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="text-center">
+        <a class="btn btn btn-outline-info" data-toggle="collapse" href="#collapseComentarios" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <strong>Ver comentarios del hotel</strong>
+        </a>
+    </div>
+      
+    <br>
+    <div class="collapse" id="collapseComentarios" style="padding-left: 2rem;padding-right: 2rem;">
+        <app-calificacionHotel-listar></app-calificacionHotel-listar>
+    </div>
+</div>

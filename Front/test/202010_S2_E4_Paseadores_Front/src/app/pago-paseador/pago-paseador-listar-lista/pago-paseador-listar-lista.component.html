@@ -1,0 +1,18 @@
+<div class="table-responsive">
+  <table class="card-table table" style="text-align: center;">
+    <thead class="thead" style="background-color: #E26E2D;color: white;">
+      <tr class="centrado">
+        <th>Referencia</th>
+        <th>Monto</th>
+        <th>Fecha límite</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="centrado" *ngFor= "let pp of pagosPaseador">
+        <td class="border">{{pp.referencia}} </td>
+        <td class="border">{{pp.monto}} pesos </td>
+        <td class="border">{{formatoDia(pp.fechaLimite)}} </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

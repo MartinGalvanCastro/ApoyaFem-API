@@ -1,0 +1,70 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">
+    <img src="../assets/pawinv.png" width="50" height="50" class="d-inline-block" alt="">
+    <span class="align-middle" style="margin-left: 10px; font-size:150%;font-family: quicksand,sans-serif;font-weight: 700;font-style: normal;">Pawseadores</span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/paseos/list" id="elem">Psicologós</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/recorridos/list" id="elem">Abogados</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/paseadores/list" id="elem">Mentores</a>
+      </li>
+      <li class="nav-item dropright">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+          style="color: rgba(255, 255, 255, 0.7);font-size: large;font-weight: 500;border-radius: 10px 10px;" *ngIf="esAdmin()">
+          Admin
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/clientes/list">Clientes</a>
+          <a class="dropdown-item" routerLink="/perros/list">Perros</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="/pagosCliente/list">Pagos de clientes</a>
+          <a class="dropdown-item" routerLink="/pagosPaseadores/list">Pagos a paseadores</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="/contratosPaseo/list">Contratos de los paseos</a>
+          <a class="dropdown-item" routerLink="/contratoshotel/list">Contratos del hotel</a>
+        </div>
+      </li>
+    </ul>
+    <button class="btn btn-outline-light my-2 my-sm-0" type="submit" style="margin-right: 5px;font-size: large;font-weight: 500;" (click)= "abrirPerfilCliente()" *ngIf='esCliente()'>Mi perfil</button>
+    <button class="btn btn-outline-light my-2 my-sm-0" type="submit" style="margin-right: 5px;font-size: large;font-weight: 500;" (click)= "abrirLogIn()" *ngIf='!esCliente() && !esAdmin() && !esPaseador()'>Iniciar sesión</button>
+    <button class="btn btn-light my-2 my-sm-0" type="submit" style="margin-left: 5px;font-size: large;font-weight: 500;" (click)= "openModal()" *ngIf='!esCliente() && !esAdmin() && !esPaseador()'>Registrarse</button>
+    <button class="btn btn-light my-2 my-sm-0" type="submit" style="margin-left: 5px;font-size: large;font-weight: 500;" routerLink="" (click)= "cerrarSesion()" *ngIf='esCliente() || esAdmin() || esPaseador()'>Cerrar sesión</button>
+  </div>
+</nav>
+<div class="page-wrapper">
+    <!-- Main Router Outlet -->
+    <div class="content-wrapper">
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  
+  
+    <!-- Footer -->
+    <div class="footer" id="footer">
+      <div class="container-fluid">
+        <div class="row" style="min-height: 5px;max-height: 5px;">
+          <div class="col" style="background-color: #80afb3;"></div>
+          <div class="col-6" style="background-color: #e26e2d;"></div>
+          <div class="col" style="background-color: #175053;"></div>
+        </div>
+      </div>
+    <br>
+    <ul class="flex-container center">
+        <li class="flex-item"><p class="navbar-text text-center">
+            <img src="../assets/pawseadoresIcon.png" alt="logo" width="30%" />
+          </p></li>
+    </ul>
+    </div>
+  </div>
+  

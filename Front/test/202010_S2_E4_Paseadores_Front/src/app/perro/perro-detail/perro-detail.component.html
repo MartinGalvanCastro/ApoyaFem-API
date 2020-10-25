@@ -1,0 +1,53 @@
+<div class="container-xl" style="padding:0;">
+  <br>
+    <div class="card border-secondary">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img class="card-img-top" src={{perroDetail.imagen}} alt="https://ui-avatars.com/api/?background=80AFB3&color=fff&size=375&bold=true&name={{perroDetail.nombre}}" style="width: 100%; max-width: 375px; height: 375px; object-fit: cover;object-position: 100% 100%;padding:2rem;border-radius: 50%;">
+        </div>
+        <div class="col-md-8">
+          <div class="row align-items-start" style="padding-left: 2rem;padding-top: 7px;">
+              <h2 class="card-title" style="padding-left: 0;">{{perroDetail.nombre}}</h2>
+            </div>
+          <div class="row" style="padding: 1rem;padding-top: 0%;">
+            <div class="col-md-6">
+              <div class="card border-primary h-100 text-center">
+                <h4 class="card-header">Información</h4>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Raza: {{perroDetail.raza}}</li>
+                  <li class="list-group-item">Edad: {{perroDetail.edad}}</li>
+                  <li class="list-group-item" *ngIf="perroDetail.estadias">Estadías en el hotel: {{perroDetail.estadias}}</li>
+                  <li class="list-group-item" *ngIf="!perroDetail.estadias">Todavía no se ha hospedado en el hotel</li>
+                  <li class="list-group-item">Historial clínico: {{perroDetail.idPerro}}</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="card h-100 text-center">
+                <h4 class="card-header">Propietario</h4>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">
+                        <div class="row">
+                          <div class="col-md-4" style="padding-right: 1px; padding-left: 3px; padding-bottom: 4px;">
+                            <img src="{{perroDetail.propietario.imagen}}" alt="https://ui-avatars.com/api/?background=e26e2d&color=fff&size=128&bold=true&name={{perroDetail.propietario.nombre}}" style="border-radius: 50%;" width="60" height="60">
+                          </div>
+                          <div class="col-md-8" style="padding-left: 1px; padding-bottom: 4px;text-align: left;">
+                            <h4>{{perroDetail.propietario.nombre}}</h4>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item">Número telefónico: {{perroDetail.propietario.telefono}}</li>
+                    </ul>
+                <div class="card-footer">
+                  <a class="btn btn-outline-info" type="button" href="./clientes/{{perroDetail.propietario.id}}"><strong>Más info. del propietario</strong></a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
