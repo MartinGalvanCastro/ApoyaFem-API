@@ -1,0 +1,131 @@
+<div class="container-xl">
+  <br>
+  <div *ngIf="!esCliente()">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Registrese o ingrese como cliente para reservar</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+  <div class="row row-cols-1 row-cols-md-1">
+    <div class="col mb-4" *ngFor = "let p of paseos">
+      <div class="card border-secondary">
+        <div class="row no-gutters">
+          <div class="col-xl-4">
+            <app-recorrido-preview [id]="p.recorrido.id"></app-recorrido-preview>
+          </div>
+          <div class="col-xl-8">
+            <div class="row align-items-start" style="padding-left: 2rem;padding-top: 8px;">
+                <div class="col-md-8" style="padding:0">
+                  <h2 class="card-title" style="padding-left: 0;">Paseo {{p.id}}
+                    <span class="badge badge-primary">{{formatter.format(p.costo)}}</span>
+                  </h2>
+                </div>
+                <div class="col-md-4 float-right">
+                  <h2 class="card-title float-right" style="padding-right: 1rem;">
+                    <span class="badge badge-warning" *ngIf="p.cupoMaximo - p.contratosPaseo.length < 5 && p.cupoMaximo - p.contratosPaseo.length > 0 && p.disponible">¡Últimos cupos!</span>
+                    <span class="badge badge-danger" *ngIf="p.cupoMaximo - p.contratosPaseo.length <= 0 && p.disponible">Sin cupos</span>
+                  </h2>
+                </div>
+    
+              </div>
+            <div class="row" style="padding: 1rem;padding-top: 0%;">
+              <div class="col-lg-4">
+                <div class="card border-primary h-100 text-center">
+                  <h4 class="card-header">Información</h4>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Duración: <span class="badge badge-light">{{p.duracion}} minutos</span></li>
+                    <li class="list-group-item">Cupo max: <span class="badge badge-light">{{p.cupoMaximo}} mascotas</span></li>
+                    <li class="list-group-item">Fecha: <span class="badge badge-light">{{ strToTime(p.horaInicio)}}</span></li>
+                  </ul>
+                  <div class="card-footer">
+                    <button class="btn btn-primary" type="button" (click)= "reservar(p)" *ngIf="esCliente() && p.cupoMaximo - p.contratosPaseo.length > 0 && p.disponible">
+                      <strong>Reservar </strong> <span class="badge badge-light">{{p.cupoMaximo - p.contratosPaseo.length}} cupos restantes</span>
+                    </button>
+                    <button class="btn btn-outline-danger" type="button" (click)= "reservar()" *ngIf="(p.cupoMaximo - p.contratosPaseo.length <= 0) && p.disponible" disabled>
+                      <strong>Reservar </strong> <span class="badge badge-danger">No hay cupos restantes</span>
+                    </button>
+                    <button class="btn btn-outline-danger" type="button" (click)= "reservar()" *ngIf="!p.disponible" disabled>
+                      <strong>Reservar </strong> <span class="badge badge-danger">No está disponible</span>
+                    </button>
+                    <button class="btn btn-primary" type="button" (click)= "reservar()" *ngIf="!esCliente()  && p.cupoMaximo - p.contratosPaseo.length > 0 && p.disponible" disabled>
+                      <strong>Reservar </strong> <span class="badge badge-light">{{p.cupoMaximo - p.contratosPaseo.length}} cupos restantes</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-lg-4">
+                <div class="card h-100 text-center">
+                  <h4 class="card-header text-wrap" style="padding-bottom: 1rem;">El recorrido de este paseo: {{p.recorrido.id}}</h4>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item" data-toggle="tooltip" data-placement="top" title={{p.recorrido.calificacionGlobal}}>
+                          <span *ngIf="1 <= p.recorrido.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33"></span>
+                          <span *ngIf="1 > p.recorrido.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33" style="opacity: 0.5;filter: grayscale(100%);"></span>
+                          <span *ngIf="2 <= p.recorrido.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33"></span>
+                          <span *ngIf="2 > p.recorrido.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33" style="opacity: 0.5;filter: grayscale(100%);"></span>
+                          <span *ngIf="3 <= p.recorrido.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33"></span>
+                          <span *ngIf="3 > p.recorrido.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33" style="opacity: 0.5;filter: grayscale(100%);"></span>
+                          <span *ngIf="4 <= p.recorrido.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33"></span>
+                          <span *ngIf="4 > p.recorrido.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33" style="opacity: 0.5;filter: grayscale(100%);"></span>
+                          <span *ngIf="5 <= p.recorrido.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33"></span>
+                          <span *ngIf="5 > p.recorrido.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33" style="opacity: 0.5;filter: grayscale(100%);"></span>
+                        </li>
+                        <li class="list-group-item"><h5><span class="badge badge-info">{{p.recorrido.numeroCalificaciones}} calificaciones</span></h5></li>
+                      </ul>
+                  <div class="card-footer">
+                    <a class="btn btn-outline-info" type="button" href="./recorridos/{{p.recorrido.id}}"><strong>Más info. del recorrido</strong></a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-lg-4">
+                <div class="card h-100 text-center">
+                  <div class="card-header" style="padding-bottom: 4px;">
+                    <div class="row">
+                      <div class="col-md-4" style="padding-right: 1px; padding-left: 3px; padding-bottom: 4px;">
+                        <img src="{{p.paseador.imagen}}" alt="https://ui-avatars.com/api/?background=e26e2d&color=fff&size=128&bold=true&name={{p.paseador.nombre}}" style="border-radius: 50%;" width="60" height="60">
+                      </div>
+                      <div class="col-md-8" style="padding-left: 1px; padding-bottom: 4px;text-align: left;">
+                        <h4>{{p.paseador.nombre}}</h4>
+                      </div>
+                    </div>
+                  </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item" data-toggle="tooltip" data-placement="top" title={{p.paseador.calificacionGlobal}}>
+                          <span *ngIf="1 <= p.paseador.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33"></span>
+                          <span *ngIf="1 > p.paseador.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33" style="opacity: 0.5;filter: grayscale(100%);"></span>
+                          <span *ngIf="2 <= p.paseador.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33"></span>
+                          <span *ngIf="2 > p.paseador.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33" style="opacity: 0.5;filter: grayscale(100%);"></span>
+                          <span *ngIf="3 <= p.paseador.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33"></span>
+                          <span *ngIf="3 > p.paseador.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33" style="opacity: 0.5;filter: grayscale(100%);"></span>
+                          <span *ngIf="4 <= p.paseador.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33"></span>
+                          <span *ngIf="4 > p.paseador.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33" style="opacity: 0.5;filter: grayscale(100%);"></span>
+                          <span *ngIf="5 <= p.paseador.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33"></span>
+                          <span *ngIf="5 > p.paseador.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="33" height="33" style="opacity: 0.5;filter: grayscale(100%);"></span>
+                        </li>
+                        <li class="list-group-item"><h5><span class="badge badge-info">{{p.paseador.numeroCalificaciones}} calificaciones</span></h5></li>
+                      </ul>
+                  <div class="card-footer">
+                    <a class="btn btn-outline-info" type="button" href="./paseadores/{{p.paseador.id}}"><strong>Más info. del paseador</strong></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button *ngIf= "esAdmin()" type="button" id="agregar" class="btn btn-primary" (click) = "alSeleccionar()"><strong>Agregar paseo</strong></button>
+    </div>
+  </div>
+  <div class="row" *ngIf= "crearNuevo">
+    <div class="col">
+      <app-paseo-crear></app-paseo-crear>
+    </div>
+  </div>
+</div>

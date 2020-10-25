@@ -1,0 +1,115 @@
+<div class="container-fluid">
+	<div class="col-4 p-3">
+		<div class="h4">Creación de un paseo</div>
+		<form [formGroup] = "paseadorFormulario" (ngSubmit) = "!paseadorFormulario.invalid && crearPaseo(paseadorFormulario.value)">
+			<div class="form-group mx-sm-3 mb-2">
+				<label for="nombre">
+					Nombre completo del paseador
+				</label>
+				<input novalidate id="nombre" type="string" class="form-control" formControlName="nombre" placeholder="Nombre del paseador">
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseadorFormulario.get('nombre').hasError('required') && paseadorFormulario.get('nombre').touched">
+					Nombre del paseador requerido para su registro
+				</div>
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseadorFormulario.get('nombre').hasError('minLength') && paseadorFormulario.get('nombre').touched">
+					El nombre del paseador dado es muy corto
+				</div>
+			</div>
+			<div class="form-group mx-sm-3 mb-2">
+				<label for="identificacion">
+					Identificación
+				</label>
+				<input novalidate id="identificacion" type="number" class="form-control" formControlName="identificacion" placeholder="Identificación">
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseadorFormulario.get('identificacion').hasError('required') && paseadorFormulario.get('identificacion').touched">
+					Identificación del paseador requerida para su registro
+				</div>
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseadorFormulario.get('identificacion').hasError('min') && paseadorFormulario.get('identificacion').touched">
+					La identificación del paseador es muy corta 
+				</div>
+			</div>
+      <div class="form-group mx-sm-3 mb-2">
+				<label for="correo">
+					Correo
+				</label>
+				<input novalidate id="correo" type="string" class="form-control" formControlName="correo" placeholder="Correo electrónico">
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseadorFormulario.get('correo').hasError('required') && paseadorFormulario.get('correo').touched">
+					Correo del paseador requerido para su registro
+				</div>
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseadorFormulario.get('correo').hasError('email') && paseadorFormulario.get('correo').touched">
+					Formato de correo incorrecto 
+				</div>
+			</div>
+      <div class="form-group mx-sm-3 mb-2">
+				<label for="telefono">
+					Teléfono
+				</label>
+				<input novalidate id="telefono" type="number" class="form-control" formControlName="telefono" placeholder="Teléfono">
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseadorFormulario.get('telefono').hasError('required') && paseadorFormulario.get('telefono').touched">
+					Teléfono del paseador requerido para su registro
+				</div>
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseadorFormulario.get('telefono').hasError('min') && paseadorFormulario.get('telefono').touched">
+					El teléfono del paseador es muy corto 
+				</div>
+			</div>
+      <div class="form-group mx-sm-3 mb-2">
+				<label for="cuentaBancaria">
+					Cuenta bancaria
+				</label>
+				<input novalidate id="cuentaBancaria" type="number" class="form-control" formControlName="cuentaBancaria" placeholder="Cuenta bancaria">
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseadorFormulario.get('cuentaBancaria').hasError('required') && paseadorFormulario.get('cuentaBancaria').touched">
+					Cuenta bancaria del paseador requerida para su registro
+				</div>
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseadorFormulario.get('cuentaBancaria').hasError('min') && paseadorFormulario.get('cuentaBancaria').touched">
+					La cuenta bancaria del paseador es muy corto 
+				</div>
+			</div>
+			<div class="form-group mx-sm-3 mb-2">
+				<label for="eps">
+					Eps
+				</label>
+				<input novalidate id="eps" type="string" class="form-control" formControlName="eps" placeholder="Eps">
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseadorFormulario.get('eps').hasError('required') && paseadorFormulario.get('eps').touched">
+					Eps del paseador requerida para su registro
+				</div>
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseadorFormulario.get('eps').hasError('minLength') && paseadorFormulario.get('eps').touched">
+					La eps del paseador tiene una longitud muy corta 
+				</div>
+      </div>
+      <div class="form-group mx-sm-3 mb-2">
+				<label for="arl">
+					Arl
+				</label>
+				<input novalidate id="arl" type="string" class="form-control" formControlName="arl" placeholder="Arl">
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseadorFormulario.get('arl').hasError('required') && paseadorFormulario.get('arl').touched">
+					Arl del paseador requerida para su registro
+				</div>
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseadorFormulario.get('arl').hasError('minLength') && paseadorFormulario.get('arl').touched">
+					La arl del paseador tiene una longitud muy corta 
+				</div>
+      </div>
+      <div class="form-group mx-sm-3 mb-2">
+				<label for="imagen">
+					Url de la imagen
+				</label>
+				<input novalidate id="imagen" type="string" class="form-control" formControlName="imagen" placeholder="Url de la imagen">
+			</div>
+			<div class="row  m-3">
+				<button type="submit" class="btn btn-primary" [disabled]= "!paseadorFormulario.valid">Crear</button>				
+				<button type="button" class="btn btn-danger ml-3" (click)= "cancelarCreacion()">Cancelar</button>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,10 @@
+
+  .centrado {
+    text-align: center;
+}
+
+#enlace {
+    text-decoration: underline;
+    font-weight: bold;
+    color: black;
+}

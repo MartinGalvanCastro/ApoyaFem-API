@@ -1,0 +1,61 @@
+<div class="modal-header">
+  <h3 class="modal-title">¡Ingresa!</h3>
+  <button type="button" class="close" data-dismiss="modal" (click)= "closeModal('Cerrar')">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="card border-light card-body">
+    <form [formGroup]= "loginForm" (ngSubmit)= "!loginForm.invalid && login(loginForm.value)">
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Correo</span>
+          </div>
+          <input id="correo" type="text" class="form-control" formControlName="correo" placeholder="Tu correo">
+        </div>
+        <span class="badge badge-danger"
+        *ngIf= "loginForm.get('correo').hasError('required') && loginForm.get('correo').touched">
+        Correo requerido
+        </span>
+        <span class="badge badge-danger"
+        *ngIf= "loginForm.get('correo').touched && loginForm.get('correo').hasError('email')">
+        Formato incorrecto
+        </span>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Identificación</span>
+          </div>
+          <input id="identificacion" type="text" class="form-control" formControlName="identificacion" placeholder="Tu número de identificación">
+        </div>
+        <span class="badge badge-danger"
+        *ngIf= "loginForm.get('identificacion').hasError('required') && loginForm.get('identificacion').touched">
+        Identificación requerida
+        </span>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Rol</span>
+          </div>
+          <select class="form-control" id="rol" formControlName="rol">
+            <option [value]= "r" *ngFor= "let r of roles">{{r}}</option>
+          </select>
+        </div>
+        <span class="badge badge-danger"
+        *ngIf= "loginForm.get('rol').hasError('required') && loginForm.get('rol').touched">
+        Rol requerido
+        </span>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-info" [disabled]= "!loginForm.valid"><strong>Ingresar</strong></button>                
+        <button type="button" class="btn btn-outline-danger ml-3" data-dismiss="modal" (click)= "closeModal('Botón cancelar')">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

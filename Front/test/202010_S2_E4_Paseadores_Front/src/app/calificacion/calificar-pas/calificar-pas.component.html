@@ -1,0 +1,68 @@
+<div class="card border-info" style="padding-top: 1rem;padding-bottom: 1rem;" *ngIf='esCliente()'>
+	<div class="col text-left">
+		<form [formGroup]="calForm" (ngSubmit)="!calForm.invalid && calificar(calForm.value)">
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Valoración</label>
+          </div>
+          <select class="custom-select" novalidate id="valoracion" class="form-control" formControlName="valoracion">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <span class="badge badge-danger"
+          *ngIf="calForm.get('valoracion').hasError('required') && calForm.get('valoracion').touched">
+          Este campo no puede estar vacío
+        </span>
+      </div>
+
+			<div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Paseador</span>
+          </div>
+          <select class="custom-select" id="contratoPaseador" class="form-control" formControlName="contratoPaseador">
+            <option selected disabled value="">Paseadores con contratos sin calificar...</option>
+            <ng-container *ngFor="let contrato of clienteAct.contratosPaseo">
+              <option  value="{{contrato.id}}" *ngIf="!contrato.calificacionPaseador">{{contrato.paseo.paseador.nombre}}</option>
+            </ng-container>
+          </select>
+        </div>
+				<span class="badge badge-danger"
+            *ngIf="calForm.get('contratoPaseador').hasError('required') && calForm.get('contratoPaseador').touched">
+            Este campo no puede estar vacío
+        </span>
+			</div>
+
+			<div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Comentario</span>
+          </div>
+				  <textarea rows="2" class="form-control" aria-label="With textarea" id="comentario" type="text" class="form-control" formControlName="comentario" placeholder="Escriba acá su comentario"></textarea>
+        </div>
+        <span class="badge badge-danger"
+            *ngIf="calForm.get('comentario').hasError('required') && calForm.get('comentario').touched">
+            Este campo no puede estar vacío
+          </span>
+				  <span class="badge badge-danger"
+            *ngIf="calForm.get('comentario').hasError('minlength') && calForm.get('comentario').touched">
+            El comentario es muy corto
+          </span>
+      </div>
+			<div>
+				<button type="submit" class="btn btn-info" [disabled]="!calForm.valid"><strong>Calificar</strong></button>				
+				<button type="button" class="btn btn-outline-danger ml-3" (click)="cancelCreation()">Cancelar</button>
+      </div>
+      
+		</form>
+  </div>
+</div>
+<div class="alert alert-info" role="alert" style="min-width: 100%;min-height: 100%;text-align: center;" *ngIf='!esCliente()'>
+  <h4>Debe iniciar sesión como cliente para poder comentar</h4>
+</div>

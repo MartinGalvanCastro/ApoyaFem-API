@@ -1,0 +1,33 @@
+<div class="container-xl">
+    <br>
+    <div class="card pagosCliente">
+        <h2 class="card-header">Pagos de los clientes</h2>
+        <div *ngIf="seleccionado">
+            <app-pago-cliente-detail [pagoCliente] = "pagoClienteSeleccionado"></app-pago-cliente-detail>
+          </div>
+        <div class="table-responsive table-hover">
+            <table class="card-table table" style="text-align: center;">
+                <thead class="thead" style="background-color: #E26E2D;color: white;">
+                    <tr id="encabezado">
+                        <th>Referencia </th>
+                        <th>Monto</th>
+                        <th>Cliente</th>
+                        <th>Servicio</th>
+                        <th>Medio de pago</th>
+                    </tr>
+                </thead>
+                <tbody id="clientes">
+                    <tr *ngFor="let p of pagosCliente" (click) = "alSeleccionar(p)">
+                        <td class="border">{{p.referencia}}</td>
+                        <td class="border">{{p.monto}}</td>
+                        <td class="border">{{p.cliente.nombre}}</td>
+                        <td class="border" *ngIf="(p.contratoHotel === undefined) == false; else esPaseo">Hotel</td>
+                        <ng-template #esPaseo class="border"><td>Paseo</td></ng-template>
+                        <td class="border">{{p.medioPago}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+</div>

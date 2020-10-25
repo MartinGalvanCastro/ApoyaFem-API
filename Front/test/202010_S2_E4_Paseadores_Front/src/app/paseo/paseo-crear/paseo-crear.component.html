@@ -1,0 +1,83 @@
+<div class="container-fluid">
+	<div class="col-4 p-3">
+		<div class="h4">Creación de un paseo</div>
+		<form [formGroup] = "paseoFormulario" (ngSubmit) = "!paseoFormulario.invalid && crearPaseo(paseoFormulario.value)">
+			<div class="form-group mx-sm-3 mb-2">
+				<label for="cupoMaximo">
+					Cupo máximo
+				</label>
+				<input novalidate id="cupoMaximo" type="number" class="form-control" formControlName="cupoMaximo" placeholder="Cupo máximo de mascotas">
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseoFormulario.get('cupoMaximo').hasError('required') && paseoFormulario.get('cupoMaximo').touched">
+					Cupo máximo de mascotas en el paseo requerido
+				</div>
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseoFormulario.get('cupoMaximo').hasError('min') && paseoFormulario.get('cupoMaximo').touched">
+					El cupo máximo debe ser un valor mayor a cero
+				</div>
+			</div>
+			<div class="form-group mx-sm-3 mb-2">
+				<label for="costo">
+					Costo
+				</label>
+				<input novalidate id="costo" type="number" class="form-control" formControlName="costo" placeholder="Costo">
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseoFormulario.get('costo').hasError('required') && paseoFormulario.get('costo').touched">
+					Costo del paseo requerido
+				</div>
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseoFormulario.get('costo').hasError('min') && paseoFormulario.get('costo').touched">
+					El costo del paseo debe ser un valor positivo
+				</div>
+			</div>
+
+			<div class="form-group  mx-sm-3 mb-2">
+				<label for="duracion">
+					Duración
+				</label>
+				<select class="form-control" id="duracion" formControlName="duracion" placeholder="30 minutos">
+					<option [value]= "d" *ngFor= "let d of duraciones">{{d}}</option>
+				</select>
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseoFormulario.get('duracion').hasError('required') && paseoFormulario.get('duracion').touched">
+					Duración del paseo requerida
+				</div>
+			</div>
+
+			<div class="form-group  mx-sm-3 mb-2">
+				<label for="fechaInicio">
+					Fecha de inicio (aaaa-mm-dd)
+				</label>
+				<input id="fechaInicio" type="text" class="form-control" formControlName="fechaInicio" placeholder="aaaa-mm-dd">
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseoFormulario.get('fechaInicio').hasError('required') && paseoFormulario.get('fechaInicio').touched">
+					Fecha de inicio del paseo requerida
+				</div>
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf = "paseoFormulario.get('fechaInicio').touched && paseoFormulario.get('fechaInicio').hasError('pattern')">
+					Formato incorrecto de fecha
+				</div>
+      </div>
+      
+      <div class="form-group  mx-sm-3 mb-2">
+				<label for="horaInicio">
+					Hora de inicio (hh:mm)
+				</label>
+				<input id="horaInicio" type="text" class="form-control" formControlName="horaInicio" placeholder="hh:mm">
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf= "paseoFormulario.get('horaInicio').hasError('required') && paseoFormulario.get('horaInicio').touched">
+					Hora de inicio del paseo requerida
+				</div>
+				<div class="alert alert-danger alert-dismissible fade show"
+					*ngIf = "paseoFormulario.get('horaInicio').touched && paseoFormulario.get('horaInicio').hasError('pattern')">
+					Formato incorrecto de hora
+				</div>
+			</div>
+			
+			<div class="row  m-3">
+				<button type="submit" class="btn btn-primary" [disabled]= "!paseoFormulario.valid">Crear</button>				
+				<button type="button" class="btn btn-danger ml-3" (click)= "cancelarCreacion()">Cancelar</button>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,44 @@
+<div class="container-xl">
+  <div class="card-crear-contratohotel">
+    <div class="card border-primary" *ngIf= "crearNuevo">
+      <div class="card-body">
+        <app-contrato-hotel-crear></app-contrato-hotel-crear>
+      </div>
+    </div>
+  <div class="row">
+    <div class="col">
+      <button type="button" id="agregar" class="btn btn-primary" (click) = "alSeleccionar()">Agregar Contrato Hotel</button>
+    </div>
+  </div>
+  </div>
+  <div *ngIf="selected">
+    <app-contrato-hotel-detail [contratoHotelDetail]="selectedContratoHotel"> </app-contrato-hotel-detail>
+  </div>
+</div>
+<div class="container-xl">
+  <h2>Contratos del hotel</h2>
+  <div class="table-responsive table-hover">
+      <table class="card-table table">
+        <thead class="thead" style="background-color: #E26E2D;color: white;font-family: 'Quicksand', sans-serif;">
+              <tr class="centrado">
+                  <th>Cuidado Especial</th>
+                  <th>Costo</th>
+                  <th>Cliente</th>
+                  <th>Perro</th>
+                  <th>Calificación</th>
+              </tr>
+          </thead>
+          <tbody class="centrado">
+              <tr *ngFor="let p of contratosHotel">
+                  <td class="border"><a id="enlace" (click) = "onSelected(p)" >{{p.cuidadoEspecial}}</a></td>
+                  <td class="border"><a id="enlace" (click) = "onSelected(p)" >{{p.costo}}</a> $</td>
+                  <td class="border"><a id="enlace" (click) = "onSelected(p)" >{{p.cliente.nombre}} </a> </td>
+                  <td class="border"><a id="enlace" (click) = "onSelected(p)" >{{p.perro.nombre}}</a></td>
+                  <td class="border" *ngIf="(p.calificacion === undefined) == false"><a id="enlace" (click) = "onSelected(p)" >{{p.calificacion.valoracion}}</a></td>
+                  <td class="border" *ngIf="p.calificacion === undefined"><a id="enlace" (click) = "onSelected(p)" >No hay calificaciones</a></td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+

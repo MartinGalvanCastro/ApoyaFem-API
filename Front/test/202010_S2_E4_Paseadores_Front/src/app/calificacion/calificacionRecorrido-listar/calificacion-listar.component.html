@@ -1,0 +1,9 @@
+<div class="col" style="overflow-y: scroll;">
+  <div class="row" id="rowClientes" style="height: auto;">
+    <ng-container *ngFor="let p of paseos" >
+      <ng-container *ngFor="let c of p.contratosPaseo" >
+        <app-calificacion-detail *ngIf="c.calificacionRecorrido" [calificacion]="c.calificacionRecorrido" [autor]="c.cliente.nombre" [img]="c.cliente.imagen"></app-calificacion-detail>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

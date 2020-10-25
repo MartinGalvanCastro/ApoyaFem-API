@@ -1,0 +1,19 @@
+<div class="table-responsive">
+  <table class="card-table table" style="text-align: center;">
+    <thead class="thead" style="background-color: #E26E2D;color: white;">
+      <tr id="encabezado">
+        <th>Duración (minutos)</th>
+        <th>Fecha y hora</th>
+        <th>¿Ocupado?</th>
+      </tr>
+    </thead>
+    <tbody id="horarios">
+      <tr *ngFor = "let h of horarios">
+        <td class="border"> {{h.duracion}}</td>
+        <td class="border">{{formatoDia(h.dia)}}</td>
+        <td class="border"> {{darOcupado(h.ocupado)}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

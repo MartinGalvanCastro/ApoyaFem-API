@@ -1,0 +1,167 @@
+  
+  <div class="row">
+    <div class="col-3">
+		<div class="h4">Reservar en el Hotel</div>
+		<br>
+		<form [formGroup] = "contratoHotelFormulario" (ngSubmit) = "!contratoHotelFormulario.invalid && crearContratoHotel(contratoHotelFormulario.value,contratoHotelFormulario.value)" *ngIf="esAdmin()">
+			<div class="form-group mx-sm-3 mb-2">
+				<label for="cuidadoEspecial">
+					Cuidado Especial
+				</label>
+				<input novalidate id="cuidadoEspecial" class="form-control" formControlName="cuidadoEspecial" placeholder="Cuidado especial de la mascota">
+      </div>
+      <div class="form-group mx-sm-3 mb-2">
+				<label for="nombreCliente">
+				  Nombre Cliente
+				</label>
+        <input novalidate id="nombreCliente"  class="form-control" formControlName="nombreCliente" placeholder="nombre del cliente">
+		<span class="badge badge-danger"
+					*ngIf= "contratoHotelFormulario.get('nombreCliente').hasError('required') && contratoHotelFormulario.get('nombreCliente').touched">
+					Nombre del cliente requerido
+			</span>
+      </div>
+      <div class="form-group mx-sm-3 mb-2">
+				<label for="idCliente">
+				  Identificación Cliente
+				</label>
+        <input novalidate id="idCliente"  class="form-control" formControlName="idCliente" placeholder="identificacion del cliente">
+		<span class="badge badge-danger"
+					*ngIf= "contratoHotelFormulario.get('idCliente').hasError('required') && contratoHotelFormulario.get('idCliente').touched">
+					Identificación del cliente requerida
+			</span>
+      </div>
+      <div class="form-group mx-sm-3 mb-2">
+				<label for="nombrePerro">
+				  Nombre Perro
+				</label>
+        <input novalidate id="nombrePerro"  class="form-control" formControlName="nombrePerro" placeholder="Nombre del perro">
+		<span class="badge badge-danger"
+					*ngIf= "contratoHotelFormulario.get('nombrePerro').hasError('required') && contratoHotelFormulario.get('nombrePerro').touched">
+					Nombre del perro requerido
+			</span>
+      </div>
+      <div class="form-group mx-sm-3 mb-2">
+				<label for="idPerro">
+				  Identificación perro
+				</label>
+      <input novalidate id="idPerro"  class="form-control" formControlName="idPerro" placeholder="identificacion del perro">
+	  <span class="badge badge-danger"
+					*ngIf= "contratoHotelFormulario.get('idPerro').hasError('required') && contratoHotelFormulario.get('idPerro').touched">
+					Identificación del perro requerida
+			</span>
+      </div>
+			<div class="form-group  mx-sm-3 mb-2">
+				<label for="medioPago">
+					Medio de Pago
+				</label>
+				<select class="form-control" id="mediosPago" formControlName="medioPago" placeholder="CREDITO">
+					<option [value]= "m" *ngFor= "let m of mediosPago">{{m}}</option>
+				</select>
+				<span class="badge badge-danger"
+					*ngIf= "contratoHotelFormulario.get('medioPago').hasError('required') && contratoHotelFormulario.get('medioPago').touched">
+					Medio de pago requerido
+			</span>
+			</div>
+		
+			<div class="row  m-3">
+				<button type="submit" class="btn btn-info" [disabled]= "!contratoHotelFormulario.valid"><strong>Crear</strong></button>				
+				<button type="button" class="btn btn-outline-danger ml-3" (click)= "cancelarCreacion()">Cancelar</button>
+			</div>
+    </form>
+    <form [formGroup] = "contratoHotelFormularioCliente" (ngSubmit) = "!contratoHotelFormularioCliente.invalid && crearContratoHotelCliente(contratoHotelFormularioCliente.value,contratoHotelFormularioCliente.value)" *ngIf="esCliente()">
+			<div class="form-group mx-sm-3 mb-2">
+				<label for="cuidadoEspecial">
+					Cuidado Especial
+				</label>
+				<textarea rows="2" novalidate id="cuidadoEspecial" class="form-control" formControlName="cuidadoEspecial" placeholder="Cuidado especial de la mascota"></textarea>
+	  </div>
+	  <br>
+      <div class="form-group mx-sm-3 mb-2">
+				<label for="nombrePerro">
+				  Nombre Perro
+				</label>		
+					<select class="form-control" id="nombrePerro" formControlName="nombrePerro">
+						<option [value]= "p.nombre" *ngFor= "let p of perrosC">{{p.nombre}}</option>
+					</select>
+		
+					<span class="badge badge-danger"
+					*ngIf= "contratoHotelFormularioCliente.get('nombrePerro').hasError('required') && contratoHotelFormularioCliente.get('nombrePerro').touched">
+					Nombre del perro requerido
+				</span>
+	  </div>
+	  <br>
+			<div class="form-group  mx-sm-3 mb-2">
+				<label for="medioPago">
+					Medio de Pago
+				</label>
+				<select class="form-control" id="mediosPago" formControlName="medioPago" placeholder="CREDITO">
+					<option [value]= "m" *ngFor= "let m of mediosPago">{{m}}</option>
+				</select>
+				<span class="badge badge-danger"
+					*ngIf= "contratoHotelFormularioCliente.get('medioPago').hasError('required') && contratoHotelFormularioCliente.get('medioPago').touched">
+					Medio de pago requerido
+			</span>
+      </div>
+    		
+			<div class="row  m-3">
+				<button type="submit" class="btn btn-info" [disabled]= "!contratoHotelFormularioCliente.valid"><strong>Reservar</strong></button>				
+				<button type="button" class="btn btn-outline-danger ml-3" (click)= "cancelarCreacion()">Cancelar</button>
+			</div>
+		</form>
+    </div>
+    <div class="col-9">
+      <div class="container-fluid" >
+        <div class="row">
+          <div class="col-8">
+			  <div class="card border-primary text-center">
+				<h3 class="card-header bg-primary" style="color: white;">Seleccione las horas a reservar</h3>
+				<full-calendar defaultView="dayGridMonth" [plugins]="calendarPlugins" [events]="calendarEvents" 
+					[eventColor]="color" (eventClick)="handleDateClick($event)" selectable:true style="padding:1rem"></full-calendar>
+			  </div>
+			  
+          </div>
+          <div class="col-4">
+            <div class="row">
+              <div class="col">
+                <div class="card-crear-contratohotel" *ngIf="horaHotelV!=null">
+                  <div class="card" style="width: 100%;">
+                    <div class="card-body">
+                      <h4 class="card-title">Informacion de la Hora seleccionada</h4>
+                      <h5 class="card-subtitle mb-2 text-muted">Hora: {{strToTime(horaHotelV.dia)}}</h5>
+                      <p class="card-text">Costo: {{horaHotelV.costoBase}}$</p>
+                      <p class="card-text" *ngIf="horaHotelV.disponible"> Disponible </p>
+                      <p class="card-text">Capacidad: {{horaHotelV.cupoMaximo}}</p>
+                      <button type="button" id="agregar" class="btn btn-primary" [disabled]= "estaAdd(horaHotelV)" (click) = "addHoraHotel(horaHotelV)">Añadir a la reserva</button>        
+                    </div>
+                  </div>
+                </div>  
+              </div> 
+            </div>  
+            <div class="row">
+              <div class="col">
+                <div *ngIf="horasHotelS.length==0">
+                  <h5> No hay horas agregadas</h5>
+                </div>
+                <div *ngIf="horasHotelS.length>0">
+                  <div class="card" style="width: 100%;">
+                    <div class="card-header">
+                      Horas agregadas en la reserva
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item" *ngFor="let hs of horasHotelS">
+                         {{strToDate(hs.dia)}} - {{strToTime(hs.dia)}} 
+                         <button type="button" id="eliminar" class="btn btn-primary" (click) = "eliminarHoraHotel(horaHotelV)">Eliminar de la reserva</button>        
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+        
+    </div>
+
+

@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <p class="h3 p-3"> Referencia de pago: {{pagoPaseadorDetail.referencia}}</p>
+  <div class="row">
+    <div class="col-3">
+      <div class="thumb">
+        <img class="img-fluid" src={{pagoPaseadorDetail.paseador.imagen}} />
+      </div>
+    </div>
+    <div class="col">
+      <div class="table-responsive">
+        <table class="card-table table">
+          <tbody>
+            <tr>
+              <td class="table-dark">Nombre</td>
+              <td class="border">{{pagoPaseadorDetail.paseador.nombre}}</td>
+            </tr>
+            <tr>
+              <td class="table-dark">Identificación</td>
+              <td class="border">{{pagoPaseadorDetail.paseador.identificacion}}</td>
+            </tr>
+            <tr>
+              <td class="table-dark">Correo</td>
+              <td class="border">{{pagoPaseadorDetail.paseador.correo}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col">
+      <div class="table-responsive">
+        <table class="card-table table">
+          <tbody>
+            <tr>
+              <td class="table-dark">Cuenta bancaria</td>
+              <td class="border">{{pagoPaseadorDetail.paseador.cuentaBancaria}}</td>
+            </tr>
+            <tr>
+              <td class="table-dark">Monto</td>
+              <td class="border">{{pagoPaseadorDetail.monto}}</td>
+            </tr>
+            <tr>
+              <td class="table-dark">Fecha límite de pago</td>
+              <td class="border">{{formatoDia(pagoPaseadorDetail.fechaLimite)}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h4> Paseos por pagar </h4>
+      <app-paseo-listar-lista [paseos] = "pagoPaseadorDetail.porPagar"></app-paseo-listar-lista>
+    </div>
+  </div>
+</div>

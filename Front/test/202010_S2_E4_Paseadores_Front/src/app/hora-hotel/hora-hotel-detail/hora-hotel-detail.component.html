@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <h2 class="centrado">Información de la Hora del Hotel seleccionada</h2>
+  <div class="card horaHotel">
+  <div class="row">
+    <div class="col">
+      <dl>
+        <dt style="text-align: center; font-size: larger;"> Dia y Hora</dt>
+        <dd style="text-align: center;"> {{ strToDate(horaHotelDetail.dia) }} - {{strToTime(horaHotelDetail.dia)}} </dd>
+        <dt style="text-align: center; font-size: larger;"> Cupo Maximo</dt>
+        <dd style="text-align: center;">{{horaHotelDetail.cupoMaximo}}</dd>
+        <dt style="text-align: center; font-size: larger;"> Costo Base</dt>
+        <dd style="text-align: center;">{{horaHotelDetail.costoBase}}</dd>
+        <dt style="text-align: center; font-size: larger;">Disponible</dt>
+        <dd class="bold" style="text-align: center; font-size: large;">{{horaHotelDetail.disponible}}</dd>
+      </dl>
+    </div>
+    <div class="col" *ngxPermissionsOnly="['Administrador']">
+      <h4 class="centrado"> Contratos Hotel </h4>
+      <div class="table-responsive">
+      <table class="card-table table">
+        <thead class="thead-dark">
+          <tr class="centrado">
+              <th> Cliente </th>
+              <th> Perro</th>
+              <th> Cuidado Especial</th>
+              <th> Costo </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="centrado" *ngFor= "let c of horaHotelDetail.contratosHotel">
+            <td class="border">{{c.cliente.nombre}}</td>
+            <td class="border">{{c.perro.nombre}}</td>
+            <td class="border">{{c.cuidadoEspecial}}</td>
+            <td class="border">{{c.costo}}</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+ 
