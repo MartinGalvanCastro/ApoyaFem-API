@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from . import views
+from django.conf.urls import url, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/usuarios/',include('usuarios_API.urls')),
-    path('api/chat/',include('chat_API.urls'))
+    path('api/chat/',include('chat_API.urls')),
+    url('^api/$',views.docView.as_view())
 ]
