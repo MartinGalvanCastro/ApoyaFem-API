@@ -1,11 +1,11 @@
-from ..models import usuarioApoyaFem,usuarioAbogado,usuarioPsicologo,ciudad,departamento
+from ..models import usuarioApoyaFem,usuarioAbogado,usuarioPsicologo,ciudad,departamento,usuarioBase
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User,Group
 import os,json
 
 
 #########################################################################################################
-###########################################USUARIOS APOYAFEM#############################################
+#                                         USUARIOS APOYAFEM                                             #
 #########################################################################################################
 def getAllApoyaFem():
     """Función que retorna todos los usuarios de ApoyaFem
@@ -81,7 +81,7 @@ def createApoyaFem(datos):
     
     except Exception:
         usuarioDJ.delete()
-        return None
+        raise ObjectDoesNotExist()
     usuarioAF.save()
     return usuarioAF
 
@@ -263,7 +263,7 @@ def getAllPsicologos():
     """
     return usuarioPsicologo.objects.all()
 
-def getPsicologosById(id):
+def getPsicologoById(id):
     """Función qie retorna un Psicologo por ID
     Args:
         id (int): Id del Psicologo
@@ -394,6 +394,11 @@ def deletePsicologo(pk):
     usuarioDJ = usuarioA.usuario
     usuarioDJ.delete()
 
+def getUsuarioBase(pk):
+    try:
+        return usuarioBase.objects.get(id=pk)
+    except ObjectDoesNotExist:
+        None
 
 def loadCiudades():
     """Metodo para cargar las ciudades ay dptos a la bd

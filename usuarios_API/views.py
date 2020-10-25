@@ -28,7 +28,7 @@ class usuarioApoyaFemViewList(APIView):
         """
         usuarios = getAllApoyaFem()
         serializer = self.serializer_class(usuarios,many=True)
-        return Response(serializer.data)
+        return Response(serializer.data,status=status.HTTP_200_OK)
     
         
     def post(self,request):
@@ -39,11 +39,14 @@ class usuarioApoyaFemViewList(APIView):
             HTTP201 Si se creo con exito
             HTTP400 Si fallo la creación
         """
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            createApoyaFem(request.data)
-            return Response(serializer.data,status=status.HTTP_201_CREATED)
-        else:
+        try:
+            serializer = self.serializer_class(data=request.data)
+            if serializer.is_valid():
+                createApoyaFem(request.data)
+                return Response(serializer.data,status=status.HTTP_201_CREATED)
+            else:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except ObjectDoesNotExist:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class usuarioApoyaFemViewDetail(APIView):
@@ -110,7 +113,7 @@ class usuarioApoyaFemViewDetail(APIView):
         try:
             deleteApoyaFem(pk)
             return Response(status=status.HTTP_202_ACCEPTED)
-        except Exception:
+        except ObjectDoesNotExist:
             return Response(serializer.errors,status=status.HTTP_404_NOT_FOUND)
 
 class usuarioApoyaFemEmailDetail(APIView):
@@ -407,7 +410,7 @@ class usuarioPsicologoViewDetail(APIView):
             HTTP200 si se encontro
             HTTP404 si no se encontro
         """
-        usuario = getPsicologosById(pk)
+        usuario = getPsicologoById(pk)
         serializer = self.serializer_class(usuario)
         if usuario is not None:
             return Response(serializer.data,status=status.HTTP_200_OK)
@@ -447,7 +450,7 @@ class usuarioPsicologoViewDetail(APIView):
             HTTP202 si se elimino con exito
             HTTP404 si no se encontro el usuario
         """
-        usuario = getPsicologosById(pk)
+        usuario = getPsicologoById(pk)
         serializer = self.serializer_class(usuario)
         try:
             deletePsicologo(pk)
