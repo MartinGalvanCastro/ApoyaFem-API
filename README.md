@@ -7,14 +7,12 @@
 ### Nota: A mi me pidio instalar Microsoft C++ 14.0 o algo asi. Descarga :https://visualstudio.microsoft.com/es/visual-cpp-build-tools/
 ---
 ## TODO List:
-1. Agregar modelo de mensajes
-2. API CHAT
-2. Autenticar usuarios dentro del chat
-3. Limitar funcionalidades en chat (Ej: A las usuarias no se les carga los mensajes de chats anteriores)
-4. Generar chat y salas
+1. Autenticar usuarios dentro del chat
+2. Limitar funcionalidades en chat (Ej: A las usuarias no se les carga los mensajes de chats anteriores)
  ---
 ## READY LIST:
 1. API Usuarios
+2. API CHAT
  ---
  ## Lista de funcioanlidades del chat (Agregar si es necesario):
  1. A las usuarias en el chat no cargan mensajes anteriores

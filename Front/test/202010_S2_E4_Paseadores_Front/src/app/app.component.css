@@ -1,6 +1,6 @@
 
 #footer {
-  background-color:white;
+  background-color:#be9fbe;
     min-height: 50px; /* whatever you want it to be */
     flex-grow: 0;
 }
@@ -42,14 +42,14 @@ sticky-header {
   }  
 
   #elem{
-    color: rgba(255, 255, 255, 0.7);
+    columns: #8c588d;
     font-size: large;
     font-weight: 500;
     border-radius: 10px 10px;
   }
 
   #elem:hover{
-    color: white;
+    color: black;
   }
 
 
