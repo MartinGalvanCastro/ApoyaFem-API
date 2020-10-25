@@ -12,29 +12,29 @@
     <app-recorrido-detail [recorridoDetail]="selectedRecorrido"></app-recorrido-detail>
   </div>
   <div class="row row-cols-1 row-cols-md-2">
-    <div class="col mb-4" *ngFor = "let r of recorridos">
+    <div class="col mb-4">
       <div class="card">
         <div class="row no-gutters">
           <div class="col-md-6">
             <div class="card-body" style="padding-left: 2rem;">
               <div class="row align-items-start">
-                <h2 class="card-title">Recorrido {{r.id}}</h2>
+                <h2 class="card-title">Abogado</h2>
               </div>
               <div class="row align-items-center">
                 <ul class="list-group list-group-flush" style="border-width: 10px; padding: 0;">
-                  <li class="list-group-item" data-toggle="tooltip" data-placement="top" title={{r.calificacionGlobal}} style="padding-left: 0;">
-                    <span *ngIf="1 <= r.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
-                    <span *ngIf="1 > r.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
-                    <span *ngIf="2 <= r.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
-                    <span *ngIf="2 > r.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
-                    <span *ngIf="3 <= r.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
-                    <span *ngIf="3 > r.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
-                    <span *ngIf="4 <= r.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
-                    <span *ngIf="4 > r.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
-                    <span *ngIf="5 <= r.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
-                    <span *ngIf="5 > r.calificacionGlobal"><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
+                  <li class="list-group-item" data-toggle="tooltip" data-placement="top" title="Calificaciones" style="padding-left: 0;">
+                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
+                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
+                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
+                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
+                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
+                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
+                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
+                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
+                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
+                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
                   </li>
-                  <li class="list-group-item" style="padding-left: 0;"><h5><span class="badge badge-info">{{r.numeroCalificaciones}} calificaciones</span></h5></li>
+                  <li class="list-group-item" style="padding-left: 0;"><h5><span class="badge badge-info"> calificaciones</span></h5></li>
                 </ul>
               </div>
               <div class="row align-items-end" style="padding-top: 5px;">

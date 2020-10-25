@@ -36,6 +36,9 @@ class usuarioBase(models.Model):
     correo = models.EmailField(max_length=255,blank=False,null=False,unique=True)    #Correo del usuario
     contrasenia = models.CharField(max_length=255,blank=False,null=False)   #Clave del usuario
 
+    def __str__(self):
+        return str(self.id)
+
 
 class usuarioApoyaFem(usuarioBase):
     """Usuario de ApoyaFem
@@ -43,6 +46,9 @@ class usuarioApoyaFem(usuarioBase):
         usuarioBase (Herencia): Obtiene todos los atributos de usuario base
     """
     aliasUsuario=models.CharField(max_length=255,blank=False,null=False,unique=True)    #Apodo del usuario
+
+    def __str__(self):
+        return str(self.id)
     
 
 
@@ -52,7 +58,10 @@ class usuarioAbogado(usuarioBase):
         usuarioBase (Herencia): Obtiene todos los atributos de usuario base
     """
     nombre=models.CharField(max_length=255,blank=False,null=False)    #Nombre del usuario de apoyo
-    ciudadUsuario = models.OneToOneField(ciudad,blank=False,null=True, on_delete=models.SET_NULL)  #Ciudad del colaborador
+    ciudadUsuario = models.ForeignKey(ciudad,blank=False,null=True, on_delete=models.SET_NULL)  #Ciudad del colaborador
+
+    def __str__(self):
+        return str(self.id)
 
 
 class usuarioPsicologo(usuarioBase):
@@ -61,4 +70,7 @@ class usuarioPsicologo(usuarioBase):
         usuarioBase (Herencia): Obtiene todos los atributos de usuario base
     """
     nombre=models.CharField(max_length=255,blank=False,null=False)    #Nombre del usuario de apoyo
-    ciudadUsuario = models.OneToOneField(ciudad,blank=False,null=True, on_delete=models.SET_NULL)  #Ciudad del colaborador
+    ciudadUsuario = models.ForeignKey(ciudad,blank=False,null=True, on_delete=models.SET_NULL)  #Ciudad del colaborador
+
+    def __str__(self):
+        return str(self.id)
