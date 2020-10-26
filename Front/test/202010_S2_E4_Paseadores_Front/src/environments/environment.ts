@@ -3,13 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 const host = 'localhost';
-const port = '8080';
-const appName = 's2_paseadores-api';
+const port = '8000';
+const appName = 'Apoyafem-API';
 const rootApi = 'api';
 
 export const environment = {
   production: false,
-  baseUrl: `http://${host}:${port}/${appName}/${rootApi}/`
+  baseUrl: `http://${host}:${port}/${rootApi}/`
 };
 
 /*

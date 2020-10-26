@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Paseo } from '../paseo';
+import { Psicologo } from '../paseo';
 
 @Component({
   selector: 'app-paseo-listar-lista',
@@ -8,7 +8,7 @@ import { Paseo } from '../paseo';
 })
 export class PaseoListarListaComponent implements OnInit {
 
-  @Input() paseos: Paseo[];
+  @Input() paseos: Psicologo[];
 
   constructor() { }
 

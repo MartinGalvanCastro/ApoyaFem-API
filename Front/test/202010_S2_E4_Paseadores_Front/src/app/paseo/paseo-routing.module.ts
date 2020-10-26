@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { PaseoDetailComponent } from './paseo-detail/paseo-detail.component';
 
 const routes: Routes = [{
-  path: 'paseos',
+  path: 'psicologos',
   children: [
     {
       path: 'list',

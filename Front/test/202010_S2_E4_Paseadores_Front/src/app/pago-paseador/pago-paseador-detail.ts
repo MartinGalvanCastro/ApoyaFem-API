@@ -1,6 +1,6 @@
 import { PagoPaseador } from './pago-paseador';
-import { Paseo } from '../paseo/paseo';
+import { Psicologo } from '../paseo/paseo';
 
 export class PagoPaseadorDetail extends PagoPaseador {
-    porPagar : Paseo[];
+    porPagar : Psicologo[];
 }

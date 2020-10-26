@@ -1,6 +1,6 @@
 import { Punto } from "../punto/punto";
 import { Cliente } from "../cliente/cliente";
-import { Paseo } from "../paseo/paseo";
+import { Psicologo } from "../paseo/paseo";
 import { Calificacion } from "../calificacion/calificacion";
 import { Perro } from "../perro/perro";
 import { PagoCliente } from "../pago-cliente/pago-cliente";
@@ -18,7 +18,7 @@ export class ContratoPaseo {
     constructor(private idA: number, 
                 private horaEncuentroA: any, 
                 private sitioEncuentroA: Punto,
-                private paseoA: Paseo,  
+                private paseoA: Psicologo,  
                 private pagoA: PagoCliente,
                 private clienteA: Cliente,
                 private perroA: Perro,
@@ -40,7 +40,7 @@ export class ContratoPaseo {
     get id(): number {return this.idA;}
     get horaEncuentro(): any {return this.horaEncuentroA;}
     get sitioEncuentro(): Punto {return this.sitioEncuentroA;}
-    get paseo(): Paseo {return this.paseoA;}
+    get paseo(): Psicologo {return this.paseoA;}
     get pago(): PagoCliente {return this.pagoA;}
     get cliente(): Cliente {return this.clienteA;}
     get perro(): Perro {return this.perroA;}
@@ -49,7 +49,7 @@ export class ContratoPaseo {
 
 
     set cliente(client: Cliente) { this.clienteA = client }
-    set paseo(pase: Paseo) { this.paseoA = pase }
+    set paseo(pase: Psicologo) { this.paseoA = pase }
     set perro(perr: Perro) { this.perroA = perr }
     set pago(pago: PagoCliente) { this.pagoA = pago }
     set horaEncuentro (hora : any) {this.horaEncuentro = hora}

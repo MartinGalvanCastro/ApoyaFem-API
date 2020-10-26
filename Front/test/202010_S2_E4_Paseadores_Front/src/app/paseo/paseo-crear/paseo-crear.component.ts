@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
-import { Paseo } from '../paseo';
+import { Psicologo } from '../paseo';
 import { PaseoService } from '../paseo.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class PaseoCrearComponent implements OnInit {
     this.duraciones = ['30 minutos', '60 minutos', '90 minutos'];
   }
 
-  crearPaseo(nuevoPaseo : Paseo) {
+  crearPaseo(nuevoPaseo : Psicologo) {
     // Process checkout data here
     let cupo : number = this.paseoFormulario.value.cupoMaximo;
     let costo : number = this.paseoFormulario.value.costo;

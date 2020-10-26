@@ -2,7 +2,7 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { CalificacionService } from '../calificacion.service';
 import { Calificacion } from '../calificacion';
 import { PaseoDetail } from 'src/app/paseo/paseoDetail';
-import { Paseo } from 'src/app/paseo/paseo';
+import { Psicologo } from 'src/app/paseo/paseo';
 
 @Component({
   selector: 'app-calificacionRec-listar',
@@ -10,7 +10,7 @@ import { Paseo } from 'src/app/paseo/paseo';
   styleUrls: ['./calificacion-listar.component.css','../../paseadores.css']
 })
 export class CalificacionRecListarComponent{
-  @Input() paseosIn: Array<Paseo>;
+  @Input() paseosIn: Array<Psicologo>;
   selectedCalificacion: Calificacion;
   selected = false;
 
