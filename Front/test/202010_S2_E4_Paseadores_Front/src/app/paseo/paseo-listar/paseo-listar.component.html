@@ -1,4 +1,5 @@
 <div class="container-xl">
+  <div class="d-flex justify-content-center align-items-center" style="padding-top: 20px;padding-bottom: 0;"><h1><strong>Acompañamiento psicológico</strong></h1></div>
   <div *ngIf="!selected">
     <br>
     <div class="alert alert-secondary alert-dismissible fade show" role="alert">
@@ -9,14 +10,47 @@
     </div>
   </div>
   <div *ngIf="selected">
-    <app-recorrido-detail [recorridoDetail]="selectedRecorrido"></app-recorrido-detail>
+   <!-- <app-recorrido-detail [recorridoDetail]="selectedRecorrido"></app-recorrido-detail>-->
+    <div class="card border-primary">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <div class="card-body" style="padding-left: 2rem;">
+            <div class="row align-items-start">
+              <h2 class="card-title">{{selectedPaseo.nombre}}</h2>
+            </div>
+            <div class="row align-items-center">
+              <h4 class="card-title">{{selectedPaseo.correo}}</h4>
+            </div>
+            <br>
+            <div class="row align-items-end" style="padding-top: 5px;">
+              <button type="button" class="btn btn-primary btn" ><strong>Chat</strong></button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card-body" style="padding-left: 2rem;">
+            <div class="row align-items-start">
+              <p class="card-text"><strong>Ciudad:</strong> {{selectedPaseo.ciudadUsuario}}</p>
+            </div>
+            <br>
+            <div class="row align-items-center">
+              <p class="card-text"><strong>Acerca de: </strong>{{selectedPaseo.descripcion}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <img src={{selectedPaseo.fotoPerfil}} class="card-img">
+        </div>
+      </div>
+    </div>
   </div>
+  <br>
   <div class="row row-cols-1 row-cols-md-2">
-    <div class="col mb-4">
+    <div class="col mb-4" *ngFor="let c of paseos">
       <div class="card">
         <div class="row no-gutters">
           <div class="col-md-6">
-            <div class="card-body" style="padding-left: 2rem;" *ngFor="let c of paseos">
+            <div class="card-body" style="padding-left: 2rem;" >
               <div class="row align-items-start">
                 <h2 class="card-title">{{c.nombre}}</h2>
               </div>
@@ -38,7 +72,7 @@
                 </ul>
               </div>
               <div class="row align-items-end" style="padding-top: 5px;">
-                <button type="button" class="btn btn-outline-primary" (click)="onSelected(r)"><strong>Más información</strong></button>
+                <button type="button" class="btn btn-outline-primary" (click)="onSelected(c)"><strong>Más información</strong></button>
               </div>
             </div>
           </div>
