@@ -11,7 +11,7 @@ import { Paseo } from './paseo';
 })
 export class PaseoService {
   
-  private apiUrl = environment.baseUrl + 'usuarios/Psicologo/?format=json';
+  private apiUrl = environment.baseUrl + 'usuarios/Psicologo/';
 
   constructor(private http: HttpClient) { }
 

@@ -5,26 +5,32 @@ import { PagoPaseador } from '../pago-paseador/pago-paseador';
 
 export class Paseo {
 
-    constructor(private idA : number, private cupoMaximoA : number, private costoA: number,
-                private duracionA : number, private disponibleA : boolean, private horaInicioA : string, 
-                private horario1A: Horario, private horario2A: Horario, private pagoPaseadorA: PagoPaseador, 
-                private paseadorA: Paseador, private recorridoA: Recorrido ) {}
+    constructor(private idA : number, private correoA : string, private nombreA : string, private ciudadUsuarioA : string ) {}
     
     get id() : number { return this.idA; }
-    get cupoMaximo() : number { return this.cupoMaximoA; }
-    get costo() : number { return this.costoA; }
-    get duracion() : number { return this.duracionA; }
-    get disponible() : boolean { return this.disponibleA; }
-    get horaInicio() : string { return this.horaInicioA; }
-    get horario1() : Horario { return this.horario1A; }
-    get horario2() : Horario { return this.horario2A; }
-    get pagoPaseador() : PagoPaseador { return this.pagoPaseadorA; }
-    get paseador() : Paseador { return this.paseadorA; }
-    get recorrido() : Recorrido { return this.recorridoA; }
+    get correo() : string {return this.correoA;}
+    get nombre() : string {return this.nombreA;}
+    get ciudadUsuario() : string {return this.ciudadUsuarioA;}
 
-    set horaInicio(hora : string) {this.horaInicioA = hora}
-    set duracion(duracion: number) {this.duracionA = duracion}
-    set costo(cost : number) {this.costoA = cost}
-    set disponible(disp : boolean) {this.disponibleA = disp}
-    set cupoMaximo(cupo : number) {this.cupoMaximoA = cupo}
+
+
+
+
+
+    get cupoMaximo() : number { return null; }
+    get costo() : number { return null; }
+    get duracion() : number { return null; }
+    get disponible() : boolean { return null; }
+    get horaInicio() : string { return null; }
+    get horario1() : Horario { return null; }
+    get horario2() : Horario { return null; }
+    get pagoPaseador() : PagoPaseador { return null; }
+    get paseador() : Paseador { return null; }
+    get recorrido() : Recorrido { return null; }
+
+    set horaInicio(hora : string) {}
+    set duracion(duracion: number) {}
+    set costo(cost : number) {}
+    set disponible(disp : boolean) {}
+    set cupoMaximo(cupo : number) {}
 }

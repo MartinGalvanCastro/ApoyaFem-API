@@ -16,9 +16,9 @@
       <div class="card">
         <div class="row no-gutters">
           <div class="col-md-6">
-            <div class="card-body" style="padding-left: 2rem;">
+            <div class="card-body" style="padding-left: 2rem;" *ngFor="let c of paseos">
               <div class="row align-items-start">
-                <h2 class="card-title">Psicólogo</h2>
+                <h2 class="card-title">{{c.nombre}}</h2>
               </div>
               <div class="row align-items-center">
                 <ul class="list-group list-group-flush" style="border-width: 10px; padding: 0;">
