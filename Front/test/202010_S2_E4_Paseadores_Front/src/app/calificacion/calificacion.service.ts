@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PaseoDetail } from '../paseo/paseoDetail';
 import { environment } from '../../environments/environment';
-import { Psicologo } from '../paseo/paseo';
+import { Paseo } from '../paseo/paseo';
 import { ContratoHotelDetail } from '../contrato-hotel/contrato-hotel-detail';
 import { Calificacion } from './calificacion';
 import { ClienteDetail } from '../cliente/cliente-detail';
@@ -17,7 +17,7 @@ export class CalificacionService {
 
   constructor(private http: HttpClient) { }
 
-  getPaseo(v: Psicologo): Observable<PaseoDetail>{
+  getPaseo(v: Paseo): Observable<PaseoDetail>{
     return this.http.get<PaseoDetail>(this.apiUrl + 'paseos/' + v.id);
   }
 

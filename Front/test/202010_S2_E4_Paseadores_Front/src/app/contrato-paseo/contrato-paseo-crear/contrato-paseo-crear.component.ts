@@ -10,7 +10,7 @@ import { PagoCliente } from 'src/app/pago-cliente/pago-cliente';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ClienteService } from 'src/app/cliente/cliente.service';
 import { PerroService } from 'src/app/perro/perro.service';
-import { Psicologo } from 'src/app/paseo/paseo';
+import { Paseo } from 'src/app/paseo/paseo';
 import { PagoClienteService } from 'src/app/pago-cliente/pago-cliente.service';
 import { Punto } from 'src/app/punto/punto';
 import { PuntoService } from 'src/app/punto/punto.service';
@@ -25,7 +25,7 @@ export class ContratoPaseoCrearComponent implements OnInit {
   contratoPaseoFormulario: FormGroup;
   clienteA : ClienteDetail;
   mediosPago: String[] = ['EFECTIVO', 'PSE', 'CRÉDITO', 'DÉBITO'];
-  @Input() paseoDet: Psicologo;
+  @Input() paseoDet: Paseo;
   pagosCliente: Array<PagoCliente>;
   
   constructor(public activeModal: NgbActiveModal,
