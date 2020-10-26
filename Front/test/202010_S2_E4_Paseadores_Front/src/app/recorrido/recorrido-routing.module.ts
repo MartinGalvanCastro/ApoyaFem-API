@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { RecorridoDetailComponent } from './recorrido-detail/recorrido-detail.component';
 
 const routes: Routes = [{
-  path: 'recorridos',
+  path: 'abogados',
   children: [
     {
       path: 'list',
