@@ -14,7 +14,7 @@ export class PaseoListarComponent implements OnInit {
   constructor(private paseoService: PaseoService, private modalService: NgbModal) { }
 
   paseos: Array<PaseoDetail>;
-  selectedPaseo : PaseoDetail;
+  selectedPaseo : Paseo;
   selected = false;
   crearNuevo = false;
   formatter = new Intl.NumberFormat('es-CO', {style:'currency',currency:'COP', minimumFractionDigits:2});
@@ -34,7 +34,7 @@ export class PaseoListarComponent implements OnInit {
     this.crearNuevo = true
   }
 
-  onSelected(c: PaseoDetail):void{
+  onSelected(c: Paseo):void{
     this.selected=true;
     this.selectedPaseo=c;
   }

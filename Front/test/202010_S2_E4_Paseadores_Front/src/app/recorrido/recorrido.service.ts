@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class RecorridoService {
-  private apiUrl = environment.baseUrl + 'recorridos';
+  private apiUrl = environment.baseUrl + 'usuarios/Abogado/';
 
   constructor(private http: HttpClient) { }
 
