@@ -59,6 +59,8 @@ class usuarioAbogado(usuarioBase):
     """
     nombre=models.CharField(max_length=255,blank=False,null=False)    #Nombre del usuario de apoyo
     ciudadUsuario = models.ForeignKey(ciudad,blank=False,null=True, on_delete=models.SET_NULL)  #Ciudad del colaborador
+    descripcion = models.TextField(blank=False)
+    fotoPerfil = models.CharField(max_length=1000,blank=False,null=False)
 
     def __str__(self):
         return str(self.id)
@@ -71,6 +73,8 @@ class usuarioPsicologo(usuarioBase):
     """
     nombre=models.CharField(max_length=255,blank=False,null=False)    #Nombre del usuario de apoyo
     ciudadUsuario = models.ForeignKey(ciudad,blank=False,null=True, on_delete=models.SET_NULL)  #Ciudad del colaborador
+    descripcion = models.TextField(blank=False)
+    fotoPerfil = models.CharField(max_length=1000,blank=False,null=False)
 
     def __str__(self):
         return str(self.id)

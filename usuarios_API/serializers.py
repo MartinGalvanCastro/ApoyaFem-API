@@ -23,6 +23,8 @@ class UserAbogadoSerializer(serializers.Serializer):
     contrasenia = serializers.CharField(max_length=255,allow_blank=False,allow_null=False,write_only=True)
     nombre = serializers.CharField(max_length=255,allow_blank=False,allow_null=False)
     ciudadUsuario = serializers.CharField(max_length=255,allow_blank=False,allow_null=False)
+    descripcion = serializers.CharField(max_length=10000,allow_blank=False,allow_null=False)
+    fotoPerfil = serializers.CharField(max_length=1000,allow_blank=False,allow_null=False)
 
 
 class UserPsicologoSerializer(serializers.Serializer):
@@ -35,4 +37,6 @@ class UserPsicologoSerializer(serializers.Serializer):
     contrasenia = serializers.CharField(max_length=255,allow_blank=False,allow_null=False,write_only=True)
     nombre = serializers.CharField(max_length=255,allow_blank=False,allow_null=False)
     ciudadUsuario = serializers.CharField(max_length=255,allow_blank=False,allow_null=False)
+    descripcion = serializers.CharField(max_length=10000,allow_blank=False)
+    fotoPerfil = serializers.CharField(max_length=1000,allow_blank=False,allow_null=False)
     

@@ -204,7 +204,9 @@ def createAbogado(datos):
             correo = datos['correo'],
             contrasenia = datos['contrasenia'],
             ciudadUsuario = ciudadA,
-            nombre = datos['nombre'])
+            nombre = datos['nombre'],
+            descripcion=datos['descripcion'],
+            fotoPerfil=datos['fotoPerfil'])
         grupo = Group.objects.get(name='abogados')
         usuarioDJ.groups.add(grupo)
         usuarioA.save()
@@ -228,6 +230,8 @@ def updateAbogado(pk,datos):
     nombre = datos['nombre']
     contrasenia = datos['contrasenia']
     nombreCiudad = datos['ciudadUsuario']
+    descripcion=datos['descrpcion']
+    fotoPerfil = datos['fotoPerfil']
     ciudadO= ciudad.objects.get(nombre = nombreCiudad)
     usuarioA = usuarioAbogado.objects.get(id=pk)
     usuarioDJ = usuarioA.usuario
@@ -340,7 +344,9 @@ def createPsicologo(datos):
             correo = datos['correo'],
             contrasenia = datos['contrasenia'],
             ciudadUsuario = ciudadA,
-            nombre = datos['nombre'])
+            nombre = datos['nombre'],
+            descripcion=datos['descripcion'],
+            fotoPerfil=datos['fotoPerfil'])
         grupo = Group.objects.get(name='psicologos')
         usuarioDJ.groups.add(grupo)
         usuarioA.save()
@@ -370,6 +376,8 @@ def updatePsicologo(pk,datos):
     nombre = datos['nombre']
     contrasenia = datos['contrasenia']
     nombreCiudad = datos['ciudadUsuario']
+    descripcion=datos['descrpcion']
+    fotoPerfil = datos['fotoPerfil']
     ciudadO= ciudad.objects.get(nombre = nombreCiudad)
     usuarioA = usuarioPsicologo.objects.get(id=pk)
     usuarioDJ = usuarioA.usuario
