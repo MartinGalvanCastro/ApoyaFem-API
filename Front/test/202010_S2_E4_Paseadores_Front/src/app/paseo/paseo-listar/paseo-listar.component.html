@@ -1,6 +1,6 @@
 <div class="container-xl">
   <div class="d-flex justify-content-center align-items-center" style="padding-top: 20px;padding-bottom: 0;"><h1><strong>Acompañamiento psicológico</strong></h1></div>
-  <div *ngIf="!selected">
+  <div *ngIf="!selected" style="padding-top: 0;">
     <br>
     <div class="alert alert-secondary alert-dismissible fade show" role="alert">
       <strong>Acá se mostrará el psicólogo seleccionado</strong>
@@ -9,8 +9,8 @@
       </button>
     </div>
   </div>
-  <div *ngIf="selected">
-   <!-- <app-recorrido-detail [recorridoDetail]="selectedRecorrido"></app-recorrido-detail>-->
+  <div *ngIf="selected" style="padding-top:20px; padding-bottom: 20px">
+    <!--<app-recorrido-detail [recorridoDetail]="selectedRecorrido"></app-recorrido-detail>-->
     <div class="card border-primary">
       <div class="row no-gutters">
         <div class="col-md-4">
@@ -44,7 +44,6 @@
       </div>
     </div>
   </div>
-  <br>
   <div class="row row-cols-1 row-cols-md-2">
     <div class="col mb-4" *ngFor="let c of paseos">
       <div class="card bg-light">
@@ -89,40 +88,6 @@
           </div>
         </div>
       </div>
-     <!-- <div class="card">
-        <div class="row no-gutters">
-          <div class="col-md-6">
-            <div class="card-body" style="padding-left: 2rem;" >
-              <div class="row align-items-start">
-                <h2 class="card-title">{{c.nombre}}</h2>
-              </div>
-              <div class="row align-items-center">
-                <ul class="list-group list-group-flush" style="border-width: 10px; padding: 0;">
-                  <li class="list-group-item" data-toggle="tooltip" data-placement="top" title="Calificaciones" style="padding-left: 0;">
-                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
-                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
-                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
-                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
-                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
-                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
-                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
-                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
-                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40"></span>
-                    <span ><img src="../../../assets/star-128.webp" alt="" width="40" height="40" style="opacity: 0.5;filter: grayscale(100%);"></span>
-                  </li>
-                  <li class="list-group-item" style="padding-left: 0;"><h5><span class="badge badge-info"> calificaciones</span></h5></li>
-                </ul>
-              </div>
-              <div class="row align-items-end" style="padding-top: 5px;">
-                <button type="button" class="btn btn-outline-primary" (click)="onSelected(c)"><strong>Más información</strong></button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-      <app-punto-listar [puntos]="r.puntos" ></app-punto-listar>
-          </div>
-        </div>
-      </div>-->
     </div>
   </div>
   <br>
